@@ -21,10 +21,14 @@ void MainGameState::update(const float &dt)
 
     this->updateKeyboard(dt);
     this->m_player->update(dt,this->mousePos);
-    //this->m_player2->update(dt,this->mousePos);
+   // this->m_player2->update(dt,this->mousePos);
     if(this->m_player->getHitbox().intersect(this->m_player2->getHitbox()))
     {
 
+    }
+    if(this->m_player2->getHitbox().intersect(this->m_player->getPointAttack()))
+    {
+        std::cout << "point attack is intersect \n";
     }
 }
 void MainGameState::render()
@@ -56,5 +60,9 @@ void MainGameState::updateKeyboard(const float &dt)
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         this->m_player->move(dt,0,1.f);
+    }
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+        this->m_player->attack();
     }
 }

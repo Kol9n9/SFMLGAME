@@ -22,3 +22,8 @@ bool Hitbox::intersect(Hitbox &hit)
     return (this->m_hitbox.getPosition().x >= hit.getHitbox().getPosition().x && this->m_hitbox.getPosition().x <= hit.getHitbox().getPosition().x + hit.getHitbox().getSize().x &&
             this->m_hitbox.getPosition().y >= hit.getHitbox().getPosition().y && this->m_hitbox.getPosition().y <= hit.getHitbox().getPosition().y + hit.getHitbox().getSize().y);
 }
+bool Hitbox::intersect(const sf::Vector2f &pos)
+{
+    return (pos.x >= this->m_hitbox.getPosition().x && pos.x <= this->m_hitbox.getPosition().x + this->m_hitbox.getSize().x &&
+            pos.y >= this->m_hitbox.getPosition().y && pos.y <= this->m_hitbox.getPosition().y + this->m_hitbox.getSize().y);
+}

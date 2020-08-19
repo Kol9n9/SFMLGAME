@@ -20,7 +20,9 @@ class Entity
         virtual void update(const float &dt,const sf::Vector2i &mousePos) = 0;
         virtual void moved(const sf::Vector2f &pos);
         virtual void render(sf::RenderTarget *target) = 0;
+        virtual void attack() = 0;
         sf::Vector2f const getSpriteSize();
+        sf::Vector2f const getSpriteCenter();
         Hitbox &getHitbox() { return *this->m_hitbox;}
     protected:
 

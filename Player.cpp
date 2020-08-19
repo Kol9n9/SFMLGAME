@@ -35,6 +35,11 @@ void Player::render(sf::RenderTarget *target)
     target->draw(this->m_sprite);
     target->draw(this->getHitbox().getHitbox());
     target->draw(this->m_weapon->getSprite());
+    sf::RectangleShape shape;
+    shape.setPosition(this->m_weapon->getPointAttack());
+    shape.setSize(sf::Vector2f(2,2));
+    shape.setFillColor(sf::Color(255,0,0));
+    target->draw(shape);
 }
 void Player::update(const float &dt,const sf::Vector2i &mousePos)
 {
@@ -45,7 +50,7 @@ void Player::update(const float &dt,const sf::Vector2i &mousePos)
         this->m_hitbox->updateHitbox(this->m_position,this->getSpriteSize());
 
     if(this->m_weapon)
-        this->m_weapon->update(this->m_dir, mousePos,sf::Vector2f(this->m_position.x + this->getSpriteSize().x / 2 + 5,this->m_position.y + this->getSpriteSize().y / 2 + 10));
+        this->m_weapon->update(dt, this->m_dir, mousePos,sf::Vector2f(this->getSpriteCenter().x + 5,this->getSpriteCenter().y + 10));
 
     if(this->m_movement)
     {
@@ -80,5 +85,9 @@ void Player::move(const float &dt, const float &dir_x, const float &dir_y)
 {
     if(this->m_movement)
         this->m_movement->move(dt,dir_x,dir_y);
+}
+void Player::attack()
+{
+    this->m_weapon->attack();
 }
 

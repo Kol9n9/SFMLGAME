@@ -18,6 +18,8 @@ class Player : public Entity
         void move(const float &dt, const float &dir_x, const float &dir_y);
         void update(const float &dt,const sf::Vector2i &mousePos);
         void render(sf::RenderTarget *target);
+        sf::Vector2f &getPointAttack() { return m_weapon->getPointAttack();}
+        void attack();
     protected:
 
     private:

@@ -11,7 +11,11 @@ class MeleeWeapon : public Weapon
         virtual ~MeleeWeapon();
 
     protected:
-
+        float m_attack_deg;
+        float m_attack_time_speed;
+        float m_attack_current_speed;
+        float m_attack_time;
+        bool m_is_attack;
     private:
 };
 
