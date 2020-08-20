@@ -14,7 +14,7 @@ void Animation::addAnimation(const std::string &key, const float &timer, const s
 {
     this->m_animlist[key] = new Anim(timer,frames,this->m_sprite);
 }
-void Animation::play(const std::string &key,const float &dt)
+void Animation::play(const std::string &key,const float &dt,const bool &first)
 {
-    this->m_animlist[key]->play(dt);
+    this->m_animlist[key]->play(dt,first);
 }

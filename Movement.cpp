@@ -16,6 +16,10 @@ void Movement::move(const float &dt, const float &dir_x, const float &dir_y)
     this->m_velocity.x += this->m_acceleration * dir_x * dt;
     this->m_velocity.y += this->m_acceleration * dir_y * dt;
 }
+void Movement::stopMove()
+{
+    this->m_velocity.x = this->m_velocity.y = 0;
+}
 void Movement::update(const float &dt)
 {
     if(this->m_velocity.x > 0.f)

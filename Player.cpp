@@ -1,12 +1,15 @@
 #include "Player.h"
 
-Player::Player()
-    : Entity("resouces/PLAYER_SHEET2.png",sf::IntRect(10,3,44,62))
+Player::Player(const float &base_hp, const float &base_damage,const sf::Vector2f &pos)
+    : Entity("resouces/PLAYER_SHEET2.png", sf::IntRect(10,3,44,62), base_hp, base_damage, pos)
 {
     this->initAnimations();
     this->m_movement = new Movement(this,0.2f,0.15f,0.2f);
     this->m_weapon = new Sword("resouces/sword.png");
-    this->m_dir = PLAYER_MOVE_DIR::DOWN;
+    this->m_hp = this->m_base_hp;
+    this->m_damage = this->m_base_damage;
+    this->m_isDied = false;
+    this->m_dir = movement_states::MOVING_DOWN;
     //ctor
 }
 void Player::initAnimations()
@@ -28,10 +31,13 @@ Player::~Player()
 {
     if(this->m_animation) delete this->m_animation;
     if(this->m_movement) delete this->m_movement;
+    if(this->m_weapon) delete this->m_weapon;
+
     //dtor
 }
 void Player::render(sf::RenderTarget *target)
 {
+    if(this->m_isDied) return;
     target->draw(this->m_sprite);
     target->draw(this->getHitbox().getHitbox());
     target->draw(this->m_weapon->getSprite());
@@ -43,6 +49,13 @@ void Player::render(sf::RenderTarget *target)
 }
 void Player::update(const float &dt,const sf::Vector2i &mousePos)
 {
+    if(this->m_isDied) return;
+    this->m_first = true;
+    if(this->m_old_dir == this->m_dir)
+    {
+        this->m_first = false;
+    }
+    this->m_old_dir = this->m_dir;
     if(this->m_movement)
         this->m_movement->update(dt);
 
@@ -56,38 +69,48 @@ void Player::update(const float &dt,const sf::Vector2i &mousePos)
     {
         if(this->m_movement->getState(IDLE))
         {
+            this->m_old_dir = -1;
+
             //this->m_animation->play("WALK_IDLE",dt);
         }
         else if(this->m_movement->getState(MOVING_LEFT))
         {
-            this->m_dir = PLAYER_MOVE_DIR::LEFT;
-            this->m_animation->play("WALK_LEFT",dt);
+            this->m_animation->play("WALK_LEFT",dt,this->m_first);
+            this->m_dir = movement_states::MOVING_LEFT;
         }
         else if(this->m_movement->getState(MOVING_RIGHT))
         {
-            this->m_dir = PLAYER_MOVE_DIR::RIGHT;
-            this->m_animation->play("WALK_RIGHT",dt);
+            this->m_animation->play("WALK_RIGHT",dt,this->m_first);
+            this->m_dir = movement_states::MOVING_RIGHT;
         }
         else if(this->m_movement->getState(MOVING_UP))
         {
-            this->m_dir = PLAYER_MOVE_DIR::UP;
-            this->m_animation->play("WALK_UP",dt);
+            this->m_animation->play("WALK_UP",dt,this->m_first);
+            this->m_dir = movement_states::MOVING_UP;
         }
         else if(this->m_movement->getState(MOVING_DOWN))
         {
-            this->m_dir = PLAYER_MOVE_DIR::DOWN;
-            this->m_animation->play("WALK_DOWN",dt);
+            this->m_animation->play("WALK_DOWN",dt,this->m_first);
+            this->m_dir = movement_states::MOVING_DOWN;
         }
     }
 }
 
 void Player::move(const float &dt, const float &dir_x, const float &dir_y)
 {
+    if(this->m_weapon && this->m_weapon->getAttacking())
+        return;
     if(this->m_movement)
         this->m_movement->move(dt,dir_x,dir_y);
 }
 void Player::attack()
 {
+    this->m_movement->stopMove();
     this->m_weapon->attack();
 }
-
+void Player::loseHP(const float &damage)
+{
+    this->m_hp -= damage;
+    std::cout << "HP = " << this->m_hp << "\n";
+    if(this->m_hp <= 0) this->m_isDied = true;
+}

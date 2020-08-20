@@ -11,7 +11,7 @@ class Animation
     public:
         Animation(sf::Sprite &sprite);
         virtual ~Animation();
-        void play(const std::string &key,const float &dt);
+        void play(const std::string &key,const float &dt, const bool &first);
         void addAnimation(const std::string &key, const float &timer, const std::vector<sf::IntRect> &frames);
     protected:
 
@@ -26,14 +26,18 @@ class Animation
         float m_timer;
         float m_timerMax;
         bool m_isDone;
+        int m_oldframe;
     public:
-
         Anim(const float &timerMax, const std::vector<sf::IntRect> &frames, sf::Sprite &sprite)
             : m_timer(timerMax-1), m_current(0), m_isDone(false), m_timerMax(timerMax), m_frames(frames), m_sprite(sprite)
         {
+            m_oldframe = -1;
         }
-        const bool &play(const float &dt)
+        const bool &play(const float &dt,const bool &first)
         {
+
+            if(first) {this->m_sprite.setTextureRect(this->m_currentFrame);}
+
             this->m_isDone = false;
             this->m_timer += 100*dt;
             if(this->m_timer >= this->m_timerMax)
@@ -50,13 +54,12 @@ class Animation
                 }
                 this->m_sprite.setTextureRect(this->m_currentFrame);
             }
-
             return this->m_isDone;
         }
         void reset()
         {
             this->m_timer = this->m_timerMax;
-
+            this->m_oldframe = -1;
         }
 
     };

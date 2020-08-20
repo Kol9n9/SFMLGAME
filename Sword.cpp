@@ -10,7 +10,7 @@ Sword::Sword(const std::string &texture_file)
 		this->m_sprite.getGlobalBounds().height
 	);
 	this->m_attack_distance = 50.f;
-	this->m_attack_time_speed = 1;
+	this->m_attack_time_speed = 0.1;
 
 }
 Sword::~Sword()
@@ -19,10 +19,8 @@ Sword::~Sword()
 }
 void Sword::attack()
 {
-    if(this->m_is_attack) return;
+    if(this->m_is_attacking) return;
     this->m_is_attack = true;
     this->m_attack_time = 0;
-    this->m_is_atacking = true;
-    std::cout << "atack \n";
 }
 

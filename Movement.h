@@ -12,6 +12,7 @@ class Movement
         void update(const float &dt);
         void move(const float &dt, const float &dir_x, const float &dir_y);
         const bool getState(const short unsigned state) const;
+        void stopMove();
     protected:
 
     private:

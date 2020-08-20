@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SFML" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/SFML" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="./" />
+					<Add directory="GUI" />
+					<Add directory="GUI/" />
+					<Add directory="States" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics-s-d" />
+					<Add library="sfml-window-s-d" />
+					<Add library="sfml-audio-s-d" />
+					<Add library="sfml-network-s-d" />
+					<Add library="sfml-system-s-d" />
+					<Add library="openal32" />
+					<Add library="opengl32" />
+					<Add library="libws2_32.a" />
+					<Add library="gdi32" />
+					<Add library="freetype" />
+					<Add library="winmm" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/SFML" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="./" />
+					<Add directory="GUI" />
+					<Add directory="GUI/" />
+					<Add directory="States" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics-s" />
+					<Add library="sfml-window-s" />
+					<Add library="sfml-audio-s" />
+					<Add library="sfml-network-s" />
+					<Add library="sfml-system-s" />
+					<Add library="openal32" />
+					<Add library="opengl32" />
+					<Add library="libws2_32.a" />
+					<Add library="gdi32" />
+					<Add library="freetype" />
+					<Add library="winmm" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++11" />
+			<Add option="-DSFML_STATIC" />
+			<Add directory="C:/SFML/include" />
+		</Compiler>
+		<Linker>
+			<Add option="-static-libstdc++" />
+			<Add option="-static-libgcc" />
+			<Add option="-static" />
+			<Add directory="C:/SFML/lib" />
+		</Linker>
+		<Unit filename="Animation.cpp" />
+		<Unit filename="Animation.h" />
+		<Unit filename="Entity.cpp" />
+		<Unit filename="Entity.h" />
+		<Unit filename="GUI/Button.cpp" />
+		<Unit filename="GUI/Button.h" />
+		<Unit filename="GUI/Button_interface.cpp" />
+		<Unit filename="GUI/Button_interface.h" />
+		<Unit filename="GUI/Checkbox.cpp" />
+		<Unit filename="GUI/Checkbox.h" />
+		<Unit filename="GUI/Droplist.cpp" />
+		<Unit filename="GUI/Droplist.h" />
+		<Unit filename="GUI/GUI.cpp" />
+		<Unit filename="GUI/GUI.h" />
+		<Unit filename="GUI/Label.cpp" />
+		<Unit filename="GUI/Label.h" />
+		<Unit filename="GUI/List.cpp" />
+		<Unit filename="GUI/List.h" />
+		<Unit filename="GUI/Progressbar.cpp" />
+		<Unit filename="GUI/Progressbar.h" />
+		<Unit filename="GUI/Scrollbar.cpp" />
+		<Unit filename="GUI/Scrollbar.h" />
+		<Unit filename="GUI/Slider.h" />
+		<Unit filename="GUI/TextInput.cpp" />
+		<Unit filename="GUI/TextInput.h" />
+		<Unit filename="Game.cpp" />
+		<Unit filename="Game.h" />
+		<Unit filename="Hitbox.cpp" />
+		<Unit filename="Hitbox.h" />
+		<Unit filename="MeleeWeapon.cpp" />
+		<Unit filename="MeleeWeapon.h" />
+		<Unit filename="Movement.cpp" />
+		<Unit filename="Movement.h" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
+		<Unit filename="States/MainGameState.cpp" />
+		<Unit filename="States/MainGameState.h" />
+		<Unit filename="States/MainMenuState.cpp" />
+		<Unit filename="States/MainMenuState.h" />
+		<Unit filename="States/State.cpp" />
+		<Unit filename="States/State.h" />
+		<Unit filename="Sword.cpp" />
+		<Unit filename="Sword.h" />
+		<Unit filename="Timer.cpp" />
+		<Unit filename="Timer.h" />
+		<Unit filename="Weapon.cpp" />
+		<Unit filename="Weapon.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main2.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

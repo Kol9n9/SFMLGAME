@@ -4,21 +4,18 @@ Entity::Entity()
 {
 
 }
-Entity::Entity(const std::string &file_texture, const sf::IntRect &rect)
+Entity::Entity(const std::string &file_texture, const sf::IntRect &rect,const float &base_hp, const float &base_damage,const sf::Vector2f &spawn_pos)
+    : m_base_hp(base_hp),m_base_damage(base_damage)
 {
     this->m_texture.loadFromFile(file_texture);
     this->m_sprite.setTexture(this->m_texture);
     this->m_sprite.setTextureRect(rect);
     this->m_hitbox = new Hitbox();
+    this->m_intersected = false;
+    this->m_position = this->m_spawn_position = spawn_pos;
+    this->setPosition(spawn_pos);
+}
 
-}
-Entity::Entity(const sf::Texture &texture, const sf::IntRect &rect)
-{
-    this->m_texture = texture;
-    this->m_sprite.setTexture(this->m_texture);
-    this->m_sprite.setTextureRect(rect);
-    //ctor
-}
 
 Entity::~Entity()
 {

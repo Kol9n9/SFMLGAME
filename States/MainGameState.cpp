@@ -1,8 +1,12 @@
 #include "MainGameState.h"
 void MainGameState::initPlayer()
 {
-    this->m_player = new Player();
-    this->m_player2 = new Player();
+    this->m_player = new Player(100,50);
+    this->m_player2 = new Player(150,25,sf::Vector2f(200,200));
+    this->m_player3 = new Player(400,40,sf::Vector2f(300,300));
+
+    this->m_entity.push_back(this->m_player2);
+    this->m_entity.push_back(this->m_player3);
 }
 MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_states)
     : State(target,m_states)
@@ -21,26 +25,30 @@ void MainGameState::update(const float &dt)
 
     this->updateKeyboard(dt);
     this->m_player->update(dt,this->mousePos);
-   // this->m_player2->update(dt,this->mousePos);
-    if(this->m_player->getHitbox().intersect(this->m_player2->getHitbox()))
+    for(auto it = this->m_entity.begin(); it != this->m_entity.end(); ++it)
     {
-
-    }
-    if(this->m_player2->getHitbox().intersect(this->m_player->getPointAttack()))
-    {
-        std::cout << "point attack is intersect \n";
+        (*it)->update(dt,this->mousePos);
+        if(this->m_player->getAttacking() && !(*it)->isDied() && !(*it)->getIntersected() && (*it)->getHitbox().intersect(this->m_player->getPointAttack()))
+        {
+            (*it)->loseHP(this->m_player->getDamage());
+            (*it)->setIntersected(true);
+        }
+        if((*it)->getIntersected() && !(*it)->getHitbox().intersect(this->m_player->getPointAttack()))
+        {
+            (*it)->setIntersected(false);
+        }
     }
 }
 void MainGameState::render()
 {
     this->m_player->render(this->target);
-    this->m_player2->render(this->target);
-
-
+    for(auto it = this->m_entity.begin(); it != this->m_entity.end(); ++it)
+    {
+        (*it)->render(this->target);
+    }
 }
 void MainGameState::updateKeyboard(const float &dt)
 {
-    float speed = 100*dt;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         this->m_endState = true;

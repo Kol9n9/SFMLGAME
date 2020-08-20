@@ -2,6 +2,7 @@
 #define MAINGAMESTATE_H
 
 #include <State.h>
+
 #include "../Player.h"
 
 class MainGameState : public State
@@ -17,6 +18,8 @@ class MainGameState : public State
         //variables
         Player *m_player;
         Player *m_player2;
+        Player *m_player3;
+        std::vector<Entity*>m_entity;
         //inits
         void initPlayer();
         //functions
