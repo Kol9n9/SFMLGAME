@@ -53,7 +53,6 @@ void Game::update()
     if(!this->states.empty())
     {
         this->states.back()->update(this->dt);
-        this->states.back()->updateMousePos();
 
         if(this->states.back()->isExit())
         {
@@ -89,7 +88,7 @@ void Game::updateSFMLEvents()
             }
             default:
             {
-                GUI::GUI::updateEvents(this->SFMLEvent);
+                GUI::GUI::updateEvents(this->window,this->SFMLEvent);
                 break;
             }
         }

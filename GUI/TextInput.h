@@ -10,10 +10,10 @@ namespace GUI{
     class TextInput : public Label
     {
         public:
-            TextInput(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            TextInput(const Point *start_pos, const sf::Vector2f &sizes, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~TextInput();
             void update();
-            void render();
+            void render(sf::RenderTarget *target);
             void setPosition(const sf::Vector2f &pos);
             void setSize(const sf::Vector2f &size);
             void inputSymbol(const uint32_t &symbol);

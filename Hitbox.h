@@ -10,7 +10,8 @@ class Hitbox
         void updateHitbox(const sf::Vector2f &pos,const sf::Vector2f &size);
         sf::RectangleShape &getHitbox() { return m_hitbox;}
         bool intersect(Hitbox &hit);
-        bool intersect(const sf::Vector2f &pos);
+        bool intersect(const sf::Vector2f &pos,const sf::Vector2f &size);
+        bool intersect(const sf::Vector2i &mousePos);
     protected:
 
     private:

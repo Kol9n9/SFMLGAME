@@ -36,16 +36,14 @@ namespace GUI{
     class GUI
     {
         public:
-            GUI(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            GUI(const Point *start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~GUI();
             virtual void update() = 0;
-            virtual void render() = 0;
-            static void updateEvents(sf::Event &events);
+            virtual void render(sf::RenderTarget *target) = 0;
+            static void updateEvents(sf::RenderWindow *target, sf::Event &events);
 
             void setStartPoint(const Point &start_point) {start_pos = start_point;}
             const Point &getStartPoint() const {return start_pos;}
-
-            const sf::Vector2i &getMousePos() const {return mousePos;}
 
             sf::Vector2f &getSizes() {return this->sizes;}
             void setSizes(const sf::Vector2f &sz) {sizes = sz;}
@@ -73,6 +71,8 @@ namespace GUI{
             static MOUSE_WHEEL_EVENTS mouse_wheel_event;
             static bool isAnyGUIMoving;
             static bool isAnyGUICorning;
+            static sf::Vector2i mousePos;
+            void setTarget(sf::RenderWindow *target) {this->target = target;}
         protected:
             sf::RenderWindow *target;
 
@@ -93,7 +93,7 @@ namespace GUI{
             GUI_STATUS status;
             Point start_pos;
             sf::Vector2f sizes;
-            sf::Vector2i mousePos;
+
             sf::Color color_IDLE;
             sf::Color color_HOVER;
             sf::Color color_CLICK;

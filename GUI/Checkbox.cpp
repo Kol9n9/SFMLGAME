@@ -1,8 +1,8 @@
 #include "Checkbox.h"
 
 namespace GUI{
-    Checkbox::Checkbox(sf::RenderWindow *target, const Point *start_pos, const int& sz, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : Button_interface(target,start_pos,sf::Vector2f(sz,sz),c_IDLE,c_HOVER,c_CLICK)
+    Checkbox::Checkbox(const Point *start_pos, const int& sz, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : Button_interface(start_pos,sf::Vector2f(sz,sz),c_IDLE,c_HOVER,c_CLICK)
     {
         this->getBox().setOutlineColor(this->getColorIDLE());
         this->getBox().setOutlineThickness(5);
@@ -47,9 +47,9 @@ namespace GUI{
             }
         }
     }
-    void Checkbox::render()
+    void Checkbox::render(sf::RenderTarget *target)
     {
-        this->target->draw(this->getBox());
+        target->draw(this->getBox());
         if(this->isBoxShow)
         {
             sf::RectangleShape debug_shape;
@@ -57,17 +57,17 @@ namespace GUI{
             debug_shape.setOutlineThickness(5);
             debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
             debug_shape.setSize(this->getSizes());
-            this->target->draw(debug_shape);
+            target->draw(debug_shape);
         }
         if(this->isCheck)
         {
-            this->target->draw(this->line1);
-            this->target->draw(this->line2);
+            target->draw(this->line1);
+            target->draw(this->line2);
         }
     }
     void Checkbox::Moving()
     {
-        this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(this->getMousePos()) - this->getMoveOffset()));
+        this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(GUI::mousePos) - this->getMoveOffset()));
     }
     void Checkbox::setPosition(const sf::Vector2f &pos)
     {

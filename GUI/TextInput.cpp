@@ -1,8 +1,8 @@
 #include "TextInput.h"
 
 namespace GUI{
-    TextInput::TextInput(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : Label(target,start_pos,"",font,textSize,c_IDLE,c_HOVER,c_CLICK)
+    TextInput::TextInput(const Point *start_pos, const sf::Vector2f &sizes, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : Label(start_pos,"",font,textSize,c_IDLE,c_HOVER,c_CLICK)
     {
         this->setSizes(sizes);
         this->str = "Text input";
@@ -55,7 +55,7 @@ namespace GUI{
         }
         this->text.setString(str);
     }
-    void TextInput::render()
+    void TextInput::render(sf::RenderTarget *target)
     {
         if(this->isBoxShow)
         {
@@ -64,10 +64,10 @@ namespace GUI{
             debug_shape.setOutlineThickness(5);
             debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
             debug_shape.setSize(this->getSizes());
-            this->target->draw(debug_shape);
+            target->draw(debug_shape);
         }
-        this->target->draw(this->text_box);
-        this->target->draw(this->text);
+        target->draw(this->text_box);
+        target->draw(this->text);
     }
     void TextInput::setPosition(const sf::Vector2f &pos)
     {
@@ -80,8 +80,7 @@ namespace GUI{
     }
     void TextInput::Moving()
     {
-        this->setPosition(sf::Vector2f(this->getMousePos().x - this->getMoveOffset().x,
-                                           this->getMousePos().y - this->getMoveOffset().y));
+        this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(GUI::mousePos) - this->getMoveOffset()));
     }
     void TextInput::Resizing()
     {

@@ -1,7 +1,7 @@
 #include "Label.h"
 namespace GUI{
-    Label::Label(sf::RenderWindow *target, const Point *start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : GUI(target,start_pos,sf::Vector2f(0,0),c_IDLE,c_HOVER,c_CLICK), str(str), font(font), textSize(textSize)
+    Label::Label(const Point *start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : GUI(start_pos,sf::Vector2f(0,0),c_IDLE,c_HOVER,c_CLICK), str(str), font(font), textSize(textSize)
     {
         /*std::string utf8 = str.c_str();
         sf::String t = sf::String::fromUtf8(utf8.begin(),utf8.end());*/
@@ -68,10 +68,9 @@ namespace GUI{
     }
     void Label::Moving()
     {
-         this->setPosition(sf::Vector2f(this->getMousePos().x - this->getMoveOffset().x,
-                                           this->getMousePos().y - this->getMoveOffset().y));
+         this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(GUI::mousePos) - this->getMoveOffset()));
     }
-    void Label::render()
+    void Label::render(sf::RenderTarget *target)
     {
         if(this->isBoxShow)
         {
@@ -80,9 +79,9 @@ namespace GUI{
             debug_shape.setOutlineThickness(5);
             debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
             debug_shape.setSize(this->getSizes());
-            this->target->draw(debug_shape);
+            target->draw(debug_shape);
         }
-        this->target->draw(this->text);
+        target->draw(this->text);
     }
     void Label::setText(const std::string &str)
     {

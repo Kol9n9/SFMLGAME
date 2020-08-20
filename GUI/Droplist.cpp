@@ -1,7 +1,7 @@
 #include "Droplist.h"
 namespace GUI{
-    Droplist::Droplist(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : GUI(target,start_pos,sizes,c_IDLE,c_HOVER,c_CLICK)
+    Droplist::Droplist(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : GUI(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK)
     {
         this->shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
         this->shape.setSize(this->getSizes());
@@ -9,7 +9,7 @@ namespace GUI{
         this->shape.setOutlineThickness(4);
         this->butWidth = 30;
         float butPosX = this->getStartPoint().x + this->getSizes().x;
-        this->but = new Button(this->target,new Point(butPosX - this->butWidth,this->getStartPoint().y),sf::Vector2f(this->butWidth,this->getSizes().y),
+        this->but = new Button(new Point(butPosX - this->butWidth,this->getStartPoint().y),sf::Vector2f(this->butWidth,this->getSizes().y),
                                "",true,sf::Color(127,127,127),sf::Color(0,127,0),sf::Color(0,127,0));
         this->list = nullptr;
         this->text.setString("");
@@ -67,7 +67,7 @@ namespace GUI{
                 this->text.setString("");
         }
     }
-    void Droplist::render()
+    void Droplist::render(sf::RenderTarget *target)
     {
 
         if(this->isBoxShow)
@@ -77,13 +77,13 @@ namespace GUI{
             debug_shape.setOutlineThickness(5);
             debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
             debug_shape.setSize(this->getSizes());
-            this->target->draw(debug_shape);
+            target->draw(debug_shape);
         }
-        this->target->draw(this->shape);
-        this->target->draw(this->but->getBox());
-        if(this->list && this->isListVisible) this->list->render();
+        target->draw(this->shape);
+        target->draw(this->but->getBox());
+        if(this->list && this->isListVisible) this->list->render(target);
         this->text.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
-        this->target->draw(this->text);
+        target->draw(this->text);
     }
     void Droplist::setList(List *list)
     {
@@ -101,7 +101,7 @@ namespace GUI{
     }
     void Droplist::Moving()
     {
-        this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(this->getMousePos()) - this->getMoveOffset()));
+        this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(GUI::mousePos) - this->getMoveOffset()));
     }
     void Droplist::setSize(const sf::Vector2f &size)
     {

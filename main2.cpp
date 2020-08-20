@@ -101,28 +101,28 @@ int t_main()
     sf::RenderWindow *window = new sf::RenderWindow(sf::VideoMode(800,600),"GUI",sf::Style::Default,set);
     font.loadFromFile("GUI/font.ttf");
     vector<GUI::GUI*> GUIVECTOR;
-    GUI::Label *list_up = new GUI::Label(window, new GUI::Point(300,165),L"Вверх",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
-    GUI::Label *list_down = new GUI::Label(window, new GUI::Point(300,201),L"Вниз",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
-    GUI::Label *list_insert = new GUI::Label(window, new GUI::Point(6,147),L"Добавить",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
-    GUI::Label *list_del = new GUI::Label(window, new GUI::Point(6,180),L"Удалить",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
-    GUI::Label *list_clear = new GUI::Label(window, new GUI::Point(3,218),L"Очистить",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
-    GUI::Label *info_1 = new GUI::Label(window, new GUI::Point(9,6),L"Двигать элементы",&font,15,sf::Color(0,0,0),sf::Color(0,0,0),sf::Color(0,0,0));
-    GUI::Label *info_2 = new GUI::Label(window, new GUI::Point(25,41),L"Изменить размер",&font,15,sf::Color(0,0,0),sf::Color(0,0,0),sf::Color(0,0,0));
-    GUI::Label *info_3 = new GUI::Label(window, new GUI::Point(60,84),L"Debug mode",&font,15,sf::Color(0,0,0),sf::Color(0,0,0),sf::Color(0,0,0));
-    GUI::Label *timer_1 = new GUI::Label(window, new GUI::Point(319,7),L"Перезапустить",&font,15,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,0,0));
-    GUI::Label *timer_2 = new GUI::Label(window, new GUI::Point(319,81),L"Перезапустить",&font,15,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,0,0));
-    GUI::List *list1 = new GUI::List(window,new GUI::Point(136,148),sf::Vector2f(150,102),sf::Color(0,255,0),sf::Color(127,127,0),sf::Color(0,0,255));
-    GUI::List *list2 = new GUI::List(window,new GUI::Point(200,20),sf::Vector2f(350,130),sf::Color(0,255,0),sf::Color(127,127,0),sf::Color(0,0,255));
-    GUI::Droplist *drop1 = new GUI::Droplist(window,new GUI::Point(136,280),sf::Vector2f(150,30),sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(0,0,255));
-    GUI::Checkbox *check = new GUI::Checkbox(window,new GUI::Point(161,6),20,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,255,0));
-    GUI::Checkbox *check2 = new GUI::Checkbox(window,new GUI::Point(161,42),20,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,255,0));
-    GUI::Checkbox *check3 = new GUI::Checkbox(window,new GUI::Point(161,81),20,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,255,0));
-    GUI::Progressbar *progress = new GUI::Progressbar(window,new GUI::Point(206,7),sf::Vector2f(100,20),sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(0,255,0));
-    GUI::Progressbar *progress2 = new GUI::Progressbar(window,new GUI::Point(204,36),50,sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(0,255,0));
-    GUI::Button *but1 = new GUI::Button(window,new GUI::Point(447,10),sf::Vector2f(120,50),
-                    new GUI::Label(window,new GUI::Point(0,0),"New Game",&font,25,sf::Color(0,0,0),sf::Color(0,255,255),sf::Color(255,255,255)),
+    GUI::Label *list_up = new GUI::Label(new GUI::Point(300,165),L"Вверх",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
+    GUI::Label *list_down = new GUI::Label(new GUI::Point(300,201),L"Вниз",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
+    GUI::Label *list_insert = new GUI::Label(new GUI::Point(6,147),L"Добавить",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
+    GUI::Label *list_del = new GUI::Label(new GUI::Point(6,180),L"Удалить",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
+    GUI::Label *list_clear = new GUI::Label(new GUI::Point(3,218),L"Очистить",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0));
+    GUI::Label *info_1 = new GUI::Label(new GUI::Point(9,6),L"Двигать элементы",&font,15,sf::Color(0,0,0),sf::Color(0,0,0),sf::Color(0,0,0));
+    GUI::Label *info_2 = new GUI::Label(new GUI::Point(25,41),L"Изменить размер",&font,15,sf::Color(0,0,0),sf::Color(0,0,0),sf::Color(0,0,0));
+    GUI::Label *info_3 = new GUI::Label(new GUI::Point(60,84),L"Debug mode",&font,15,sf::Color(0,0,0),sf::Color(0,0,0),sf::Color(0,0,0));
+    GUI::Label *timer_1 = new GUI::Label(new GUI::Point(319,7),L"Перезапустить",&font,15,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,0,0));
+    GUI::Label *timer_2 = new GUI::Label(new GUI::Point(319,81),L"Перезапустить",&font,15,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,0,0));
+    GUI::List *list1 = new GUI::List(new GUI::Point(136,148),sf::Vector2f(150,102),sf::Color(0,255,0),sf::Color(127,127,0),sf::Color(0,0,255));
+    GUI::List *list2 = new GUI::List(new GUI::Point(200,20),sf::Vector2f(350,130),sf::Color(0,255,0),sf::Color(127,127,0),sf::Color(0,0,255));
+    GUI::Droplist *drop1 = new GUI::Droplist(new GUI::Point(136,280),sf::Vector2f(150,30),sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(0,0,255));
+    GUI::Checkbox *check = new GUI::Checkbox(new GUI::Point(161,6),20,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,255,0));
+    GUI::Checkbox *check2 = new GUI::Checkbox(new GUI::Point(161,42),20,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,255,0));
+    GUI::Checkbox *check3 = new GUI::Checkbox(new GUI::Point(161,81),20,sf::Color(0,0,0),sf::Color(127,127,127),sf::Color(0,255,0));
+    GUI::Progressbar *progress = new GUI::Progressbar(new GUI::Point(206,7),sf::Vector2f(100,20),sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(0,255,0));
+    GUI::Progressbar *progress2 = new GUI::Progressbar(new GUI::Point(204,36),50,sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(0,255,0));
+    GUI::Button *but1 = new GUI::Button(new GUI::Point(447,10),sf::Vector2f(120,50),
+                    new GUI::Label(new GUI::Point(0,0),"New Game",&font,25,sf::Color(0,0,0),sf::Color(0,255,255),sf::Color(255,255,255)),
                     true, sf::Color(0,255,255),sf::Color(255,255,255),sf::Color(255,255,255));
-    GUI::TextInput *textinput = new GUI::TextInput(window,new GUI::Point(109,335),sf::Vector2f(200,20),&font,20,sf::Color(0,0,0),sf::Color(0,0,255),sf::Color(0,0,255));
+    GUI::TextInput *textinput = new GUI::TextInput(new GUI::Point(109,335),sf::Vector2f(200,20),&font,20,sf::Color(0,0,0),sf::Color(0,0,255),sf::Color(0,0,255));
     sendProgressbar send(progress,0);
 
     Timer *timer = new Timer(50.f,timerUpdateProgressbar,&send);
@@ -156,11 +156,11 @@ int t_main()
     drop1->setList(list2);
     //progress->setPercent(50);
     //list1->setItemCount();
-    list1->insert(new GUI::Label(window, new GUI::Point(0,40),L"Строка 1",&font,20,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)));
-    list1->insert(new GUI::Label(window, new GUI::Point(0,40),L"Строка 2",&font,20,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)));
-    list2->insert(new GUI::Label(window, new GUI::Point(0,40),"800x600",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)),changeResolution,new Resolution(window,"800x600",800,600));
-    list2->insert(new GUI::Label(window, new GUI::Point(0,40),"1024x768",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)),changeResolution,new Resolution(window,"1024x768",1024,768));
-    list2->insert(new GUI::Label(window, new GUI::Point(0,40),"1920x1080",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)),changeResolution,new Resolution(window,"1920x1080",1920,1080));
+    list1->insert(new GUI::Label(new GUI::Point(0,40),L"Строка 1",&font,20,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)));
+    list1->insert(new GUI::Label(new GUI::Point(0,40),L"Строка 2",&font,20,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)));
+    list2->insert(new GUI::Label(new GUI::Point(0,40),"800x600",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)),changeResolution,new Resolution(window,"800x600",800,600));
+    list2->insert(new GUI::Label(new GUI::Point(0,40),"1024x768",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)),changeResolution,new Resolution(window,"1024x768",1024,768));
+    list2->insert(new GUI::Label(new GUI::Point(0,40),"1920x1080",&font,25,sf::Color(0,0,0),sf::Color(127,127,0),sf::Color(0,0,0)),changeResolution,new Resolution(window,"1920x1080",1920,1080));
 
     list_up->setClickCallback(*ListItemUp,list1);
     list_down->setClickCallback(*ListItemDown,list1);
@@ -218,7 +218,7 @@ int t_main()
                 }
                 default:
                 {
-                    GUI::GUI::updateEvents(event);
+                    GUI::GUI::updateEvents(window,event);
                     break;
                 }
             }
@@ -254,7 +254,7 @@ int t_main()
         {
             (*it)->setBoxShow(check3->isChecked());
             (*it)->update();
-            (*it)->render();
+            (*it)->render(window);
         }
         window->display();
         //system("cls");

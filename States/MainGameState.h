@@ -4,6 +4,7 @@
 #include <State.h>
 
 #include "../Player.h"
+#include "../Rat.h"
 
 class MainGameState : public State
 {
@@ -19,7 +20,7 @@ class MainGameState : public State
         Player *m_player;
         Player *m_player2;
         Player *m_player3;
-        std::vector<Entity*>m_entity;
+        std::vector<Enemy*>m_enemy;
         //inits
         void initPlayer();
         //functions

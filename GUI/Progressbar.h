@@ -7,11 +7,11 @@ namespace GUI{
     class Progressbar : public GUI
     {
         public:
-            Progressbar(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
-            Progressbar(sf::RenderWindow *target, const Point *start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Progressbar(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Progressbar(const Point *start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Progressbar();
             void update();
-            void render();
+            void render(sf::RenderTarget *target);
             void setPercent(const int &n) {if(n < 0 || n > 100) return; percents = n; isUpdatedPercent = true;}
             bool &isFilled() { return isFill; }
             void setSize(const sf::Vector2f &size);

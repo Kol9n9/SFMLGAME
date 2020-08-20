@@ -7,9 +7,9 @@ namespace GUI{
     class Scrollbar : public GUI
     {
         public:
-            Scrollbar(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Scrollbar(const Point *start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Scrollbar();
-            void render();
+            void render(sf::RenderTarget *target);
             void update();
             void setSliderCountPos(const int& c) { sliderCountPos = c;updateSliderSize();}
             void setSliderIndex(const int& in) { sliderCurrentIndex = in;updateSliderPos();}

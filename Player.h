@@ -24,6 +24,8 @@ class Player : public Entity
         bool &getAttacking() {return m_weapon->getAttacking();}
         float &getDamage() { return m_damage;}
         float &getHP() { return m_hp;}
+        float &getFullHP() { return m_hp_max;}
+        Weapon *getWeapon() {return m_weapon;}
     protected:
 
     private:
@@ -31,6 +33,7 @@ class Player : public Entity
         Movement *m_movement;
         Weapon *m_weapon;
         float m_hp;
+        float m_hp_max;
         float m_damage;
         void initAnimations();
         int m_dir;

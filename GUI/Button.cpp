@@ -1,15 +1,15 @@
 #include "Button.h"
 namespace GUI{
-    Button::Button(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, Label *str, bool isV, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : Button_interface(target,start_pos,sizes,c_IDLE,c_HOVER,c_CLICK), isBoxVisible(isV)
+    Button::Button(const Point *start_pos, const sf::Vector2f &sizes, Label *str, bool isV, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : Button_interface(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK), isBoxVisible(isV)
     {
         this->text = str;
         this->updateTextPosition();
         //sf::Vector2f size = this->text->getSizes();
         //ctor
     }
-    Button::Button(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, const std::string &str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : Button_interface(target,start_pos,sizes,c_IDLE,c_HOVER,c_CLICK), isBoxVisible(isV)
+    Button::Button(const Point *start_pos, const sf::Vector2f &sizes, const std::string &str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : Button_interface(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK), isBoxVisible(isV)
     {
         this->text = NULL;
     }
@@ -25,7 +25,7 @@ namespace GUI{
         if(this->text) this->text->updateColor(this->getGUIStatus());
 
     }
-    void Button::render()
+    void Button::render(sf::RenderTarget *target)
     {
         if(this->isBoxShow)
         {
@@ -36,8 +36,8 @@ namespace GUI{
             debug_shape.setSize(this->getSizes());
             this->target->draw(debug_shape);
         }
-        if(isBoxVisible) this->target->draw(this->getBox());
-        if(this->text) this->text->render();
+        if(isBoxVisible) target->draw(this->getBox());
+        if(this->text) this->text->render(target);
     }
     void Button::updateColor()
     {
@@ -96,8 +96,8 @@ namespace GUI{
     }
     void Button::Moving()
     {
-        this->setPosition(sf::Vector2f(this->getMousePos().x - this->getMoveOffset().x,
-                                           this->getMousePos().y - this->getMoveOffset().y));
+        this->setPosition(sf::Vector2f(GUI::mousePos.x - this->getMoveOffset().x,
+                                           GUI::mousePos.y - this->getMoveOffset().y));
     }
     void Button::setSize(const sf::Vector2f &size)
     {

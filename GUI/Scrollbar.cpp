@@ -1,8 +1,8 @@
 #include "Scrollbar.h"
 namespace GUI{
     bool Scrollbar::isSelectedSlider = false;
-    Scrollbar::Scrollbar(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : GUI(target,start_pos,sizes,scr_IDLE,scr_IDLE,scr_IDLE), sliderIDLE(c_IDLE), sliderHOVER(c_HOVER), sliderCLICK(c_CLICK)
+    Scrollbar::Scrollbar(const Point *start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : GUI(start_pos,sizes,scr_IDLE,scr_IDLE,scr_IDLE), sliderIDLE(c_IDLE), sliderHOVER(c_HOVER), sliderCLICK(c_CLICK)
     {
         this->scrollbar.setFillColor(scr_IDLE);
         this->scrollbar.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
@@ -42,7 +42,7 @@ namespace GUI{
         if(this->getMoving()) this->slider.setFillColor(sliderCLICK);
         if(!GUI::isAnyGUICorning && !Scrollbar::isSelectedSlider && this->isSliderContains() && !this->getMoving() && this->getMouseClickEvent() == MOUSE_CLICK_EVENTS::LEFTCLICK)
         {
-            this->mouse_offset = sf::Vector2f(this->getMousePos().x - this->slider.getPosition().x,this->getMousePos().y - this->slider.getPosition().y);
+            this->mouse_offset = sf::Vector2f(GUI::mousePos.x - this->slider.getPosition().x, GUI::mousePos.y - this->slider.getPosition().y);
             Scrollbar::isSelectedSlider = true;
             this->startMove();
         }
@@ -66,7 +66,7 @@ namespace GUI{
         }
 
     }
-    void Scrollbar::render()
+    void Scrollbar::render(sf::RenderTarget *target)
     {
         if(!this->isVisibled()) return;
         if(this->isBoxShow)
@@ -76,20 +76,20 @@ namespace GUI{
             debug_shape.setOutlineThickness(5);
             debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
             debug_shape.setSize(this->getSizes());
-            this->target->draw(debug_shape);
+            target->draw(debug_shape);
         }
-        this->target->draw(this->scrollbar);
-        this->target->draw(this->slider);
+        target->draw(this->scrollbar);
+        target->draw(this->slider);
     }
     bool Scrollbar::isSliderContains()
     {
-        return this->getMousePos().x >= this->slider.getPosition().x && this->getMousePos().x <= this->slider.getPosition().x + this->slider.getSize().x
-            && this->getMousePos().y >= this->slider.getPosition().y && this->getMousePos().y <= this->slider.getPosition().y + this->slider.getSize().y;
+        return GUI::mousePos.x >= this->slider.getPosition().x && GUI::mousePos.x <= this->slider.getPosition().x + this->slider.getSize().x
+            && GUI::mousePos.y >= this->slider.getPosition().y && GUI::mousePos.y <= this->slider.getPosition().y + this->slider.getSize().y;
     }
     bool Scrollbar::isScrollingAreaContains()
     {
-        return this->getMousePos().x >= this->startScrollingArea.x && this->getMousePos().x <= this->endScrollingArea.x
-            && this->getMousePos().y >= this->startScrollingArea.y && this->getMousePos().y <= this->endScrollingArea.y;
+        return GUI::mousePos.x >= this->startScrollingArea.x && GUI::mousePos.x <= this->endScrollingArea.x
+            && GUI::mousePos.y >= this->startScrollingArea.y && GUI::mousePos.y <= this->endScrollingArea.y;
     }
     void Scrollbar::updateSliderPos()
     {
@@ -124,7 +124,7 @@ namespace GUI{
     }
     void Scrollbar::Moving()
     {
-        sf::Vector2f newPos(this->getMousePos().x - this->mouse_offset.x,this->getMousePos().y - this->mouse_offset.y);
+        sf::Vector2f newPos(GUI::mousePos.x - this->mouse_offset.x,GUI::mousePos.y - this->mouse_offset.y);
 
         this->isUpdateIndex = false;
         int newIndex = -1;

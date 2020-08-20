@@ -7,10 +7,10 @@ namespace GUI{
     class Checkbox : public Button_interface
     {
         public:
-            Checkbox(sf::RenderWindow *target, const Point *start_pos, const int& sz, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Checkbox(const Point *start_pos, const int& sz, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Checkbox();
             void update();
-            void render();
+            void render(sf::RenderTarget *target);
             bool &isChecked() {return isCheck;}
             void Moving();
             void setPosition(const sf::Vector2f &pos);

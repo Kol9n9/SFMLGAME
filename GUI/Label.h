@@ -6,10 +6,10 @@ namespace GUI{
     class Label : public GUI
     {
         public:
-            Label(sf::RenderWindow *target, const Point *start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Label(const Point *start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Label();
             void update();
-            void render();
+            void render(sf::RenderTarget *target);
             void setText(const std::string&);
             void setFont(sf::Font *font);
             void setTextSize(const unsigned int);

@@ -10,10 +10,10 @@ namespace GUI{
     class Droplist : public GUI
     {
         public:
-            Droplist(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Droplist(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Droplist();
             void update();
-            void render();
+            void render(sf::RenderTarget *target);
             void setList(List *list);
             void Moving();
             void setPosition(const sf::Vector2f &pos);

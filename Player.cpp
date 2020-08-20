@@ -7,6 +7,7 @@ Player::Player(const float &base_hp, const float &base_damage,const sf::Vector2f
     this->m_movement = new Movement(this,0.2f,0.15f,0.2f);
     this->m_weapon = new Sword("resouces/sword.png");
     this->m_hp = this->m_base_hp;
+    this->m_hp_max = this->m_base_hp_max;
     this->m_damage = this->m_base_damage;
     this->m_isDied = false;
     this->m_dir = movement_states::MOVING_DOWN;

@@ -34,10 +34,10 @@ namespace GUI{
         public:
 
 
-            List(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            List(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~List();
             void update();
-            void render();
+            void render(sf::RenderTarget *target);
             void insert(Label*,void(*cb)(void*),void *);
             void insert(Label*);
             void changeItem(const int&);

@@ -2,10 +2,11 @@
 namespace GUI{
     MOUSE_CLICK_EVENTS GUI::mouse_click_event = MOUSE_CLICK_EVENTS::NONECLICK;
     MOUSE_WHEEL_EVENTS GUI::mouse_wheel_event = MOUSE_WHEEL_EVENTS::NONEWHEEL;
+    sf::Vector2i GUI::mousePos = sf::Vector2i(0,0);
     bool GUI::isAnyGUIMoving = false;
     bool GUI::isAnyGUICorning = false;
-    GUI::GUI(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : target(target), start_pos(*start_pos), sizes(sizes), color_IDLE(c_IDLE), color_HOVER(c_HOVER), color_CLICK(c_CLICK)
+    GUI::GUI(const Point *start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : start_pos(*start_pos), sizes(sizes), color_IDLE(c_IDLE), color_HOVER(c_HOVER), color_CLICK(c_CLICK)
     {
         this->cb_Click = nullptr;
         this->status = GUI_STATUS::IDLE;
@@ -25,7 +26,7 @@ namespace GUI{
     void GUI::updateGUIState()
     {
 
-        this->mousePos = static_cast<sf::Vector2i>(this->target->mapPixelToCoords(sf::Mouse::getPosition(*target)));
+
 
         if(this->isMoving)
         {
@@ -122,8 +123,9 @@ namespace GUI{
             this->target->setMouseCursor(cursor);
         }
     }
-    void GUI::updateEvents(sf::Event &events)
+    void GUI::updateEvents(sf::RenderWindow *target, sf::Event &events)
     {
+        mousePos = static_cast<sf::Vector2i>(target->mapPixelToCoords(sf::Mouse::getPosition(*target)));
         GUI::mouse_wheel_event = MOUSE_WHEEL_EVENTS::NONEWHEEL;
         switch(events.type)
         {

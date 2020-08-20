@@ -1,14 +1,13 @@
 #include "Progressbar.h"
 
 namespace GUI{
-    Progressbar::Progressbar(sf::RenderWindow *target, const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : GUI(target,start_pos,sizes,c_IDLE,c_HOVER,c_CLICK)
+    Progressbar::Progressbar(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : GUI(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK)
     {
         this->bar_box.setFillColor(this->getColorIDLE());
         this->bar_box.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
         this->bar_box.setSize(this->getSizes());
-        this->bar_box.setOutlineColor(sf::Color(127,127,127));
-        this->bar_box.setOutlineThickness(5);
+
 
         this->filling_box.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
         this->filling_box.setFillColor(this->getColorCLICK());
@@ -19,8 +18,8 @@ namespace GUI{
         this->type = TYPE::BOX;
         //ctor
     }
-    Progressbar::Progressbar(sf::RenderWindow *target, const Point *start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : GUI(target,start_pos,sf::Vector2f(rad*2,rad*2),c_IDLE,c_HOVER,c_CLICK), radius(rad)
+    Progressbar::Progressbar(const Point *start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : GUI(start_pos,sf::Vector2f(rad*2,rad*2),c_IDLE,c_HOVER,c_CLICK), radius(rad)
     {
         this->startCirclePoint = sf::Vector2f(this->getStartPoint().x + this->radius, this->getStartPoint().y);
 
@@ -54,7 +53,7 @@ namespace GUI{
             if(this->percents == 100) this->isFill = true;
         }
     }
-    void Progressbar::render()
+    void Progressbar::render(sf::RenderTarget *target)
     {
         if(this->isBoxShow)
         {
@@ -63,12 +62,12 @@ namespace GUI{
             debug_shape.setOutlineThickness(5);
             debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
             debug_shape.setSize(this->getSizes());
-            this->target->draw(debug_shape);
+            target->draw(debug_shape);
         }
         if(this->type == TYPE::BOX)
         {
-            this->target->draw(this->bar_box);
-            this->target->draw(this->filling_box);
+            target->draw(this->bar_box);
+            target->draw(this->filling_box);
 
         }
         else
@@ -100,7 +99,7 @@ namespace GUI{
                 prev_angle = angle;
                 prev_pos = pos;
 
-                this->target->draw(fill);
+                target->draw(fill);
             }
             prev_pos = this->startCirclePoint;
             prev_angle = 0;
@@ -125,7 +124,7 @@ namespace GUI{
                 prev_angle = angle;
                 prev_pos = pos;
 
-                this->target->draw(fill);
+                target->draw(fill);
              }
         }
     }
@@ -159,7 +158,7 @@ namespace GUI{
     }
     void Progressbar::Moving()
     {
-        this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(this->getMousePos()) - this->getMoveOffset()));
+        this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(GUI::mousePos) - this->getMoveOffset()));
     }
     void Progressbar::Resizing()
     {

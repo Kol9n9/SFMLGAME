@@ -14,6 +14,7 @@ Entity::Entity(const std::string &file_texture, const sf::IntRect &rect,const fl
     this->m_intersected = false;
     this->m_position = this->m_spawn_position = spawn_pos;
     this->setPosition(spawn_pos);
+    this->m_base_hp_max = this->m_base_hp;
 }
 
 

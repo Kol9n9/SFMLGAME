@@ -1,12 +1,10 @@
 #include "MainGameState.h"
 void MainGameState::initPlayer()
 {
-    this->m_player = new Player(100,50);
-    this->m_player2 = new Player(150,25,sf::Vector2f(200,200));
-    this->m_player3 = new Player(400,40,sf::Vector2f(300,300));
+    this->m_player = new Player(100,5);
 
-    this->m_entity.push_back(this->m_player2);
-    this->m_entity.push_back(this->m_player3);
+    this->m_enemy.push_back(new Rat(20,5,sf::Vector2f(100,100)));
+    this->m_enemy.push_back(new Rat(30,7,sf::Vector2f(200,100)));
 }
 MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_states)
     : State(target,m_states)
@@ -24,16 +22,16 @@ void MainGameState::update(const float &dt)
 {
 
     this->updateKeyboard(dt);
-    this->m_player->update(dt,this->mousePos);
-    for(auto it = this->m_entity.begin(); it != this->m_entity.end(); ++it)
+    this->m_player->update(dt,GUI::GUI::mousePos);
+    for(auto it = this->m_enemy.begin(); it != this->m_enemy.end(); ++it)
     {
-        (*it)->update(dt,this->mousePos);
-        if(this->m_player->getAttacking() && !(*it)->isDied() && !(*it)->getIntersected() && (*it)->getHitbox().intersect(this->m_player->getPointAttack()))
+        (*it)->update(dt,GUI::GUI::mousePos);
+        if(this->m_player->getAttacking() && !(*it)->isDied() && !(*it)->getIntersected() && (*it)->getHitbox().intersect(this->m_player->getPointAttack(),this->m_player->getWeapon()->getSpriteSize()))
         {
             (*it)->loseHP(this->m_player->getDamage());
             (*it)->setIntersected(true);
         }
-        if((*it)->getIntersected() && !(*it)->getHitbox().intersect(this->m_player->getPointAttack()))
+        if((*it)->getIntersected() && !(*it)->getHitbox().intersect(this->m_player->getPointAttack(),this->m_player->getWeapon()->getSpriteSize()))
         {
             (*it)->setIntersected(false);
         }
@@ -42,7 +40,7 @@ void MainGameState::update(const float &dt)
 void MainGameState::render()
 {
     this->m_player->render(this->target);
-    for(auto it = this->m_entity.begin(); it != this->m_entity.end(); ++it)
+    for(auto it = this->m_enemy.begin(); it != this->m_enemy.end(); ++it)
     {
         (*it)->render(this->target);
     }
