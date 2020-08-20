@@ -1,12 +1,10 @@
 #include "Rat.h"
 
-Rat::Rat(const float &base_hp, const float &base_damage,const sf::Vector2f &pos)
-    : Enemy("resouces/rat.png",sf::IntRect(18,42,21,23),base_hp,base_damage,pos)
+Rat::Rat(const sf::Vector2f &pos)
+    : Enemy("resouces/rat.png",sf::IntRect(18,42,21,23),pos)
 {
-    this->m_hp = this->m_base_hp;
-    this->m_hp_max = this->m_base_hp_max;
-    this->m_damage = this->m_base_damage;
     this->m_hitbox = new Hitbox();
+    this->m_attribute = new Attribute(1,2,2,2);
     this->m_isDied = false;
     this->m_hitbox->updateHitbox(this->m_position,this->getSpriteSize());
     this->m_hp_bar = new GUI::Progressbar(new GUI::Point(this->m_position.x,this->m_position.y-10),sf::Vector2f(this->m_hitbox->getHitbox().getSize().x,5),sf::Color(255,255,255),sf::Color(255,0,0),sf::Color(255,0,0));
@@ -38,8 +36,8 @@ void Rat::attack()
 }
 void Rat::loseHP(const float &damage)
 {
-    this->m_hp -= damage;
-    int percent = this->m_hp / this->m_hp_max * 100;
+    this->m_attribute->setHP(this->m_attribute->getHP() - damage);
+    int percent = this->m_attribute->getHP() / this->m_attribute->getHPMax() * 100;
     this->m_hp_bar->setPercent(percent);
-    if(this->m_hp <= 0) this->m_isDied = true;
+    if(this->m_attribute->getHP() <= 0) this->m_isDied = true;
 }

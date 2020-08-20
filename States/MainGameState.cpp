@@ -1,10 +1,10 @@
 #include "MainGameState.h"
 void MainGameState::initPlayer()
 {
-    this->m_player = new Player(100,5);
-
-    this->m_enemy.push_back(new Rat(20,5,sf::Vector2f(100,100)));
-    this->m_enemy.push_back(new Rat(30,7,sf::Vector2f(200,100)));
+    this->m_player = new Player();
+    this->m_player->getAtribute().setStrength(10);
+    this->m_enemy.push_back(new Rat(sf::Vector2f(100,100)));
+    this->m_enemy.push_back(new Rat(sf::Vector2f(200,100)));
 }
 MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_states)
     : State(target,m_states)
@@ -28,7 +28,7 @@ void MainGameState::update(const float &dt)
         (*it)->update(dt,GUI::GUI::mousePos);
         if(this->m_player->getAttacking() && !(*it)->isDied() && !(*it)->getIntersected() && (*it)->getHitbox().intersect(this->m_player->getPointAttack(),this->m_player->getWeapon()->getSpriteSize()))
         {
-            (*it)->loseHP(this->m_player->getDamage());
+            (*it)->loseHP(this->m_player->getAtribute().getDamage());
             (*it)->setIntersected(true);
         }
         if((*it)->getIntersected() && !(*it)->getHitbox().intersect(this->m_player->getPointAttack(),this->m_player->getWeapon()->getSpriteSize()))

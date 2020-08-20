@@ -74,6 +74,10 @@
 		</Linker>
 		<Unit filename="Animation.cpp" />
 		<Unit filename="Animation.h" />
+		<Unit filename="Attribute.cpp" />
+		<Unit filename="Attribute.h" />
+		<Unit filename="Enemy.cpp" />
+		<Unit filename="Enemy.h" />
 		<Unit filename="Entity.cpp" />
 		<Unit filename="Entity.h" />
 		<Unit filename="GUI/Button.cpp" />
@@ -107,6 +111,8 @@
 		<Unit filename="Movement.h" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h" />
+		<Unit filename="Rat.cpp" />
+		<Unit filename="Rat.h" />
 		<Unit filename="States/MainGameState.cpp" />
 		<Unit filename="States/MainGameState.h" />
 		<Unit filename="States/MainMenuState.cpp" />

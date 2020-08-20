@@ -11,7 +11,6 @@ Sword::Sword(const std::string &texture_file)
 	);
 	this->m_attack_distance = 50.f;
 	this->m_attack_time_speed = 0.1;
-
 }
 Sword::~Sword()
 {

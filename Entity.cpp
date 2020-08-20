@@ -4,8 +4,7 @@ Entity::Entity()
 {
 
 }
-Entity::Entity(const std::string &file_texture, const sf::IntRect &rect,const float &base_hp, const float &base_damage,const sf::Vector2f &spawn_pos)
-    : m_base_hp(base_hp),m_base_damage(base_damage)
+Entity::Entity(const std::string &file_texture, const sf::IntRect &rect,const sf::Vector2f &spawn_pos)
 {
     this->m_texture.loadFromFile(file_texture);
     this->m_sprite.setTexture(this->m_texture);
@@ -14,7 +13,6 @@ Entity::Entity(const std::string &file_texture, const sf::IntRect &rect,const fl
     this->m_intersected = false;
     this->m_position = this->m_spawn_position = spawn_pos;
     this->setPosition(spawn_pos);
-    this->m_base_hp_max = this->m_base_hp;
 }
 
 

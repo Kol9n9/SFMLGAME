@@ -1,14 +1,12 @@
 #include "Player.h"
 
-Player::Player(const float &base_hp, const float &base_damage,const sf::Vector2f &pos)
-    : Entity("resouces/PLAYER_SHEET2.png", sf::IntRect(10,3,44,62), base_hp, base_damage, pos)
+Player::Player(const sf::Vector2f &pos)
+    : Entity("resouces/PLAYER_SHEET2.png", sf::IntRect(10,3,44,62), pos)
 {
     this->initAnimations();
     this->m_movement = new Movement(this,0.2f,0.15f,0.2f);
     this->m_weapon = new Sword("resouces/sword.png");
-    this->m_hp = this->m_base_hp;
-    this->m_hp_max = this->m_base_hp_max;
-    this->m_damage = this->m_base_damage;
+    this->m_attribute = new Attribute(1,1,1,10);
     this->m_isDied = false;
     this->m_dir = movement_states::MOVING_DOWN;
     //ctor
@@ -111,7 +109,7 @@ void Player::attack()
 }
 void Player::loseHP(const float &damage)
 {
-    this->m_hp -= damage;
-    std::cout << "HP = " << this->m_hp << "\n";
-    if(this->m_hp <= 0) this->m_isDied = true;
+    this->m_attribute->setHP(this->m_attribute->getHP() - damage);
+    std::cout << "HP = " << this->m_attribute->getHP() << "\n";
+    if(this->m_attribute->getHP() <= 0) this->m_isDied = true;
 }

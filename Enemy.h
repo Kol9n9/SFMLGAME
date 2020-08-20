@@ -7,7 +7,7 @@
 class Enemy : public Entity
 {
     public:
-        Enemy(const std::string &file_texture, const sf::IntRect &rect,const float &base_hp, const float &base_damage,const sf::Vector2f &spawn_pos);
+        Enemy(const std::string &file_texture, const sf::IntRect &rect,const sf::Vector2f &spawn_pos);
         virtual ~Enemy();
 
     protected:
