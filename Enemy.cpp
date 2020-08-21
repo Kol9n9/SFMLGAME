@@ -8,5 +8,7 @@ Enemy::Enemy(const std::string &file_texture, const sf::IntRect &rect,const sf::
 
 Enemy::~Enemy()
 {
+    if(this->m_hp_bar) delete this->m_hp_bar;
+    std::cout << "~Enemy\n";
     //dtor
 }

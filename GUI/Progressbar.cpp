@@ -12,10 +12,13 @@ namespace GUI{
         this->filling_box.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
         this->filling_box.setFillColor(this->getColorCLICK());
         this->percents = 0;
+        this->onePercent = 0;
         this->isFill = false;
+        this->type = TYPE::BOX;
         this->updateOnePercent();
         isUpdatedPercent = true;
-        this->type = TYPE::BOX;
+
+
         //ctor
     }
     Progressbar::Progressbar(const Point *start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
@@ -24,13 +27,14 @@ namespace GUI{
         this->startCirclePoint = sf::Vector2f(this->getStartPoint().x + this->radius, this->getStartPoint().y);
 
         this->percents = 0;
+        this->onePercent = 0;
         this->isFill = false;
-        isUpdatedPercent = true;
+
         this->type = TYPE::CIRCLE;
 
         this->updateCircleLength();
         this->updateOnePercent();
-
+        isUpdatedPercent = true;
         sf::Font font;
         font.loadFromFile("GUI/font.ttf");
     }
@@ -68,7 +72,6 @@ namespace GUI{
         {
             target->draw(this->bar_box);
             target->draw(this->filling_box);
-
         }
         else
         {
@@ -130,8 +133,7 @@ namespace GUI{
     }
     void Progressbar::updateOnePercent()
     {
-        this->onePercent = (this->type == TYPE::BOX) ? this->getSizes().x / 100 : this->lengthCircle / 100;
-        //if(this->type == TYPE::CIRCLE) this->bar_circle.setOutlineThickness(-this->onePercent);
+        this->onePercent = ((this->type == TYPE::BOX) ? (float)this->getSizes().x : (float)this->lengthCircle)/100;
     }
     void Progressbar::setSize(const sf::Vector2f &size)
     {

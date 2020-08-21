@@ -18,7 +18,7 @@ namespace GUI{
             void setPosition(const sf::Vector2f &pos);
             void Moving();
             enum TYPE{
-                BOX,
+                BOX = 0,
                 CIRCLE
             };
         protected:

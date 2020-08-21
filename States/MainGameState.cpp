@@ -16,6 +16,12 @@ MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_sta
 
 MainGameState::~MainGameState()
 {
+    std::cout << "~MainGameState\n";
+    if(!this->m_enemy.empty())
+    {
+        for(auto &it : this->m_enemy)
+            delete it;
+    }
     //dtor
 }
 

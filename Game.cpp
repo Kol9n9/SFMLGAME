@@ -56,6 +56,7 @@ void Game::update()
 
         if(this->states.back()->isExit())
         {
+            delete this->states.back();
             this->states.pop_back();
             if(this->states.empty())
                 this->endApplication();
