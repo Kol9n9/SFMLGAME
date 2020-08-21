@@ -9,6 +9,7 @@ Rat::Rat(const sf::Vector2f &pos)
     this->m_hitbox->updateHitbox(this->m_position,this->getSpriteSize());
     this->m_hp_bar = new GUI::Progressbar(new GUI::Point(this->m_position.x,this->m_position.y-10),sf::Vector2f(this->m_hitbox->getHitbox().getSize().x,5),sf::Color(255,255,255),sf::Color(255,0,0),sf::Color(255,0,0));
     this->m_hp_bar->setPercent(100);
+    this->m_gived_xp = 5;
     //ctor
 }
 

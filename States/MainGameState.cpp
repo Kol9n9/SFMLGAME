@@ -2,7 +2,7 @@
 void MainGameState::initPlayer()
 {
     this->m_player = new Player();
-    this->m_player->getAtribute().setStrength(1);
+    this->m_player->getAtribute().setStrength(10);
     this->m_enemy.push_back(new Rat(sf::Vector2f(100,100)));
     this->m_enemy.push_back(new Rat(sf::Vector2f(200,100)));
 }
@@ -40,7 +40,14 @@ void MainGameState::update(const float &dt)
             sf::String str = " - ";
             str += std::to_string((int)this->m_player->getAtribute().getDamage());
             str += " HP";
-            this->m_textTag->addTextTag(TextTag_TYPE::TextTag_POSITIVE, str,(*it)->getPosition());
+            this->m_textTag->addTextTag(TextTag_TYPE::TextTag_NEGATIVE, str,(*it)->getPosition());
+            if((*it)->isDied())
+            {
+                str = " + ";
+                str += std::to_string((int)(*it)->getGivedXP());
+                str += " XP";
+                this->m_textTag->addTextTag(TextTag_TYPE::TextTag_POSITIVE, str,(*it)->getPosition());
+            }
             (*it)->setIntersected(true);
         }
         if((*it)->getIntersected() && !(*it)->getHitbox().intersect(this->m_player->getPointAttack(),this->m_player->getWeapon()->getSpriteSize()))
