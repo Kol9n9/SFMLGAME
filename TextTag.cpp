@@ -1,8 +1,18 @@
 #include "TextTag.h"
-
-TextTag::TextTag(const std::string &font_file)
+void TextTag::initFont(const std::string &font_file)
 {
     this->m_font.loadFromFile(font_file);
+}
+void TextTag::initTagTemplates()
+{
+    this->m_tag_templates[TextTag_TYPE::TextTag_DEFAULT] =  new Tag(this->m_font,15,sf::Color(255,255,255),80.f,20);
+    this->m_tag_templates[TextTag_TYPE::TextTag_NEGATIVE] = new Tag(this->m_font,15,sf::Color(255,0,0),80.f,20);
+    this->m_tag_templates[TextTag_TYPE::TextTag_POSITIVE] = new Tag(this->m_font,15,sf::Color(0,255,0),80.f,-20);
+}
+TextTag::TextTag(const std::string &font_file)
+{
+    this->initFont(font_file);
+    this->initTagTemplates();
 }
 
 TextTag::~TextTag()
@@ -36,7 +46,7 @@ void TextTag::render(sf::RenderTarget *target)
         }
     }
 }
-void TextTag::addTextTag(const sf::String &str,const sf::Vector2f &pos)
+void TextTag::addTextTag(TextTag_TYPE tag_type, const sf::String &str,const sf::Vector2f &pos)
 {
-    this->m_tags.push_back(new Tag(this->m_font,str,pos,70,20));
+    this->m_tags.push_back(new Tag(this->m_tag_templates[tag_type],str,pos));
 }

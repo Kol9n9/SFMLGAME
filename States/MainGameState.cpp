@@ -2,7 +2,7 @@
 void MainGameState::initPlayer()
 {
     this->m_player = new Player();
-    this->m_player->getAtribute().setStrength(10);
+    this->m_player->getAtribute().setStrength(1);
     this->m_enemy.push_back(new Rat(sf::Vector2f(100,100)));
     this->m_enemy.push_back(new Rat(sf::Vector2f(200,100)));
 }
@@ -10,6 +10,7 @@ MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_sta
     : State(target,m_states)
 {
     this->initPlayer();
+    this->m_textTag = new TextTag("GUI/font.ttf");
     //ctor
 }
 
@@ -23,12 +24,17 @@ void MainGameState::update(const float &dt)
 
     this->updateKeyboard(dt);
     this->m_player->update(dt,GUI::GUI::mousePos);
+    this->m_textTag->update(dt);
     for(auto it = this->m_enemy.begin(); it != this->m_enemy.end(); ++it)
     {
         (*it)->update(dt,GUI::GUI::mousePos);
         if(this->m_player->getAttacking() && !(*it)->isDied() && !(*it)->getIntersected() && (*it)->getHitbox().intersect(this->m_player->getPointAttack(),this->m_player->getWeapon()->getSpriteSize()))
         {
             (*it)->loseHP(this->m_player->getAtribute().getDamage());
+            sf::String str = " - ";
+            str += std::to_string((int)this->m_player->getAtribute().getDamage());
+            str += " HP";
+            this->m_textTag->addTextTag(TextTag_TYPE::TextTag_POSITIVE, str,(*it)->getPosition());
             (*it)->setIntersected(true);
         }
         if((*it)->getIntersected() && !(*it)->getHitbox().intersect(this->m_player->getPointAttack(),this->m_player->getWeapon()->getSpriteSize()))
@@ -44,6 +50,7 @@ void MainGameState::render()
     {
         (*it)->render(this->target);
     }
+    this->m_textTag->render(this->target);
 }
 void MainGameState::updateKeyboard(const float &dt)
 {

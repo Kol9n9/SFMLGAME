@@ -5,6 +5,7 @@
 
 #include "../Player.h"
 #include "../Rat.h"
+#include "../TextTag.h"
 
 class MainGameState : public State
 {
@@ -20,6 +21,7 @@ class MainGameState : public State
         Player *m_player;
         Player *m_player2;
         Player *m_player3;
+        TextTag *m_textTag;
         std::vector<Enemy*>m_enemy;
         //inits
         void initPlayer();
