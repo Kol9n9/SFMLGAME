@@ -1,0 +1,60 @@
+#include "PlayerHUD.h"
+
+void PlayerHUD::initHUD()
+{
+    this->m_level_button = new GUI::Button(new GUI::Point(0,0),sf::Vector2f(70,70),
+                        new GUI::Label(new GUI::Point(0,0),"1",&this->m_font,40,sf::Color(0,0,0),sf::Color(255,255,255),sf::Color(255,255,255)),
+                        true,sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(127,127,127));
+    this->m_hp_bar = new GUI::Progressbar(new GUI::Point(70,0),sf::Vector2f(130,20),sf::Color(255,255,255),sf::Color(255,0,0),sf::Color(255,0,0));
+    this->m_exp_bar = new GUI::Progressbar(new GUI::Point(70,30),sf::Vector2f(130,20),sf::Color(255,255,255),sf::Color(255,255,0),sf::Color(255,0,0));
+
+    this->updateHP();
+    this->updateEXP();
+}
+
+void PlayerHUD::initFont(const std::string &font_file)
+{
+    this->m_font.loadFromFile(font_file);
+}
+
+PlayerHUD::PlayerHUD(Attribute *player_attribute,const std::string &font_file)
+    : m_player_attribute(player_attribute)
+{
+    this->initFont(font_file);
+    this->initHUD();
+    //ctor
+}
+
+PlayerHUD::~PlayerHUD()
+{
+    if(this->m_level_button) delete this->m_level_button;
+    if(this->m_hp_bar) delete this->m_hp_bar;
+    //dtor
+}
+
+void PlayerHUD::update(const float &dt)
+{
+    this->updateHP();
+    this->updateEXP();
+    this->m_level_button->update();
+    this->m_hp_bar->update();
+    this->m_exp_bar->update();
+
+}
+void PlayerHUD::render(sf::RenderTarget *target)
+{
+    this->m_level_button->render(target);
+    this->m_hp_bar->render(target);
+    this->m_exp_bar->render(target);
+}
+void PlayerHUD::updateHP()
+{
+    int percent = this->m_player_attribute->getHP() / this->m_player_attribute->getHPMax() * 100;
+    this->m_hp_bar->setPercent(percent);
+}
+void PlayerHUD::updateEXP()
+{
+    int percent = this->m_player_attribute->getEXP() / this->m_player_attribute->getEXPMax() * 100;
+    this->m_exp_bar->setPercent(percent);
+}
+

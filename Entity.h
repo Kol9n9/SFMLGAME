@@ -29,7 +29,7 @@ class Entity
         Hitbox &getHitbox() { return *this->m_hitbox;}
         void setIntersected(const bool &st) {m_intersected = st;}
         bool &getIntersected() {return m_intersected;}
-        Attribute &getAtribute() {return *m_attribute;}
+        Attribute &getAttribute() {return *m_attribute;}
     protected:
 
         sf::Sprite m_sprite;

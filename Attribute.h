@@ -9,6 +9,9 @@ class Attribute
         virtual ~Attribute();
 
         void setHP(const float &hp) {m_hp = hp;}
+        void setEXP(const float &exp) {m_exp = exp;}
+
+        void giveEXP(const float &exp) {m_exp += exp; updateAttribute();}
 
         void setStrength(const int &value) {m_strength = value;updateAttribute();}
         void setAgility(const int &value) {m_agility = value;updateAttribute();}
@@ -22,6 +25,8 @@ class Attribute
 
         float &getHP() {return m_hp;}
         float &getHPMax() {return m_hp_max;}
+        float &getEXP() {return m_exp;}
+        float &getEXPMax() {return m_exp_max;}
         float &getDamage() {return m_damage;}
 
 
@@ -34,6 +39,8 @@ class Attribute
         int m_stamina;
         float m_hp;
         float m_hp_max;
+        float m_exp;
+        float m_exp_max;
         float m_damage;
 
         void updateAttribute();

@@ -6,6 +6,7 @@
 #include "../Player.h"
 #include "../Rat.h"
 #include "../TextTag.h"
+#include "../PlayerHUD.h"
 
 class MainGameState : public State
 {
@@ -19,12 +20,14 @@ class MainGameState : public State
     private:
         //variables
         Player *m_player;
-        Player *m_player2;
-        Player *m_player3;
         TextTag *m_textTag;
+        PlayerHUD *m_playerHUD;
         std::vector<Enemy*>m_enemy;
         //inits
         void initPlayer();
+        void initEnemies();
+        void initTextTag();
+        void initPlayerHUD();
         //functions
         void updateKeyboard(const float &dt);
 

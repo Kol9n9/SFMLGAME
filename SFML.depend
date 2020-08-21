@@ -2087,15 +2087,15 @@
 	<vector>
 	<iostream>
 
-1597914089 source:c:\users\79243\desktop\sfmlgame\attribute.cpp
+1597993872 source:c:\users\79243\desktop\sfmlgame\attribute.cpp
 	"Attribute.h"
 
-1597914064 c:\users\79243\desktop\sfmlgame\attribute.h
+1597993852 c:\users\79243\desktop\sfmlgame\attribute.h
 
 1597913642 source:c:\users\79243\desktop\sfmlgame\entity.cpp
 	"Entity.h"
 
-1597980267 c:\users\79243\desktop\sfmlgame\entity.h
+1597993273 c:\users\79243\desktop\sfmlgame\entity.h
 	<string>
 	"SFML/Graphics.hpp"
 	<iostream>
@@ -2145,11 +2145,12 @@
 1597980315 c:\users\79243\desktop\sfmlgame\gui\checkbox.h
 	<Button_interface.h>
 
-1597985789 c:\users\79243\desktop\sfmlgame\states\maingamestate.h
+1597991909 c:\users\79243\desktop\sfmlgame\states\maingamestate.h
 	<State.h>
 	"../Player.h"
 	"../Rat.h"
 	"../TextTag.h"
+	"../PlayerHUD.h"
 
 1597980267 c:\users\79243\desktop\sfmlgame\player.h
 	"Entity.h"
@@ -2293,6 +2294,16 @@
 1597987063 source:c:\users\79243\desktop\sfmlgame\texttag.cpp
 	"TextTag.h"
 
-1597989374 source:c:\users\79243\desktop\sfmlgame\states\maingamestate.cpp
+1597993929 source:c:\users\79243\desktop\sfmlgame\states\maingamestate.cpp
 	"MainGameState.h"
+
+1597993944 c:\users\79243\desktop\sfmlgame\playerhud.h
+	"SFML/Graphics.hpp"
+	"Button.h"
+	"Progressbar.h"
+	"Attribute.h"
+	<string>
+
+1597993185 source:c:\users\79243\desktop\sfmlgame\playerhud.cpp
+	"PlayerHUD.h"
 
