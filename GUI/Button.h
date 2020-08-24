@@ -20,6 +20,7 @@ namespace GUI{
             void setPosition(const sf::Vector2f &pos);
             void updateTextPosition();
             void setSize(const sf::Vector2f &size);
+            void setText(const sf::String &str);
         protected:
 
         private:

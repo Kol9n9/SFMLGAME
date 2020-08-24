@@ -2,7 +2,7 @@
 #define PROGRESSBAR_H
 
 #include <GUI.h>
-
+#include "Label.h"
 namespace GUI{
     class Progressbar : public GUI
     {
@@ -16,6 +16,10 @@ namespace GUI{
             bool &isFilled() { return isFill; }
             void setSize(const sf::Vector2f &size);
             void setPosition(const sf::Vector2f &pos);
+            void setOutlineThickness(const int &value) { bar_box.setOutlineThickness(value); m_outline = value; updateFillingBoxPosition();}
+            void setOutlineColor(const sf::Color &color) { bar_box.setOutlineColor(color);}
+            void setLabel(Label *label);
+            void setLabelText(const sf::String &str);
             void Moving();
             enum TYPE{
                 BOX = 0,
@@ -28,7 +32,10 @@ namespace GUI{
             sf::RectangleShape filling_box;
 
             sf::Vector2f startCirclePoint;
-            sf::Text text;
+            Label *m_label;
+
+            sf::Vector2f m_label_offset;
+
             float lengthCircle;
 
             float radius;
@@ -37,10 +44,14 @@ namespace GUI{
             bool isFill;
             TYPE type;
 
+            int m_outline;
+
             void updateOnePercent();
             bool isUpdatedPercent;
             void updateCircleLength();
+            void updateFillingBoxPosition();
             void Resizing();
+            void updateTextPosition();
 
 
     };

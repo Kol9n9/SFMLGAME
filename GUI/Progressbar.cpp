@@ -9,16 +9,19 @@ namespace GUI{
         this->bar_box.setSize(this->getSizes());
 
 
-        this->filling_box.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+
         this->filling_box.setFillColor(this->getColorCLICK());
+        this->filling_box.setSize(sf::Vector2f(0,0));
         this->percents = 0;
         this->onePercent = 0;
         this->isFill = false;
         this->type = TYPE::BOX;
         this->updateOnePercent();
+        this->m_outline = 0;
+        this->updateFillingBoxPosition();
         isUpdatedPercent = true;
 
-
+        this->m_label = nullptr;
         //ctor
     }
     Progressbar::Progressbar(const Point *start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
@@ -35,8 +38,9 @@ namespace GUI{
         this->updateCircleLength();
         this->updateOnePercent();
         isUpdatedPercent = true;
-        sf::Font font;
-        font.loadFromFile("GUI/font.ttf");
+
+        this->m_label = nullptr;
+
     }
     Progressbar::~Progressbar()
     {
@@ -51,11 +55,17 @@ namespace GUI{
             if(this->type == TYPE::BOX)
             {
                 sf::Vector2f size(this->onePercent * this->percents,this->getSizes().y);
+                if(this->percents != 0)
+                {
+                    size.x += 2 * this->m_outline;
+                    size.y += 2 * this->m_outline;
+                }
                 this->filling_box.setSize(size);
             }
             this->isUpdatedPercent = false;
             if(this->percents == 100) this->isFill = true;
         }
+
     }
     void Progressbar::render(sf::RenderTarget *target)
     {
@@ -130,6 +140,7 @@ namespace GUI{
                 target->draw(fill);
              }
         }
+        if(this->m_label) this->m_label->render(target);
     }
     void Progressbar::updateOnePercent()
     {
@@ -150,7 +161,7 @@ namespace GUI{
         if(this->type == TYPE::BOX)
         {
             this->bar_box.setPosition(pos);
-            this->filling_box.setPosition(pos);
+            this->filling_box.setPosition(sf::Vector2f(pos.x - this->m_outline,pos.y - this->m_outline));
         }
         else
         {
@@ -177,5 +188,27 @@ namespace GUI{
     void Progressbar::updateCircleLength()
     {
         this->lengthCircle = 2 * M_PI * this->radius;
+    }
+    void Progressbar::updateFillingBoxPosition()
+    {
+        this->filling_box.setPosition(sf::Vector2f(this->getStartPoint().x - this->m_outline,this->getStartPoint().y - this->m_outline));
+    }
+    void Progressbar::updateTextPosition()
+    {
+        this->m_label_offset.x = (this->getSizes().x - this->m_label->getSizes().x)/2;
+        this->m_label_offset.y = (this->getSizes().y - this->m_label->getSizes().y)/2 - this->m_label->getSizes().y / 2 - 1.5*this->m_outline;
+        sf::Vector2f pos(this->m_label_offset.x + this->getStartPoint().x,this->m_label_offset.y + this->getStartPoint().y);
+        this->m_label->setPosition(pos);
+    }
+    void Progressbar::setLabel(Label *label)
+    {
+        this->m_label = label;
+        this->updateTextPosition();
+
+    }
+    void Progressbar::setLabelText(const sf::String &str)
+    {
+        this->m_label->setText(str);
+        this->updateTextPosition();
     }
 }

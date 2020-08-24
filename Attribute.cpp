@@ -4,6 +4,8 @@ Attribute::Attribute(const int &level, const int &strength, const int &agility, 
     : m_level(level), m_strength(strength), m_agility(agility), m_stamina(stamina)
 {
     this->m_hp = this->m_stamina * 10;
+    this->m_exp = 0;
+    this->m_exp_max = 10 * this->m_level;
     this->updateAttribute();
     //ctor
 }
@@ -15,6 +17,7 @@ Attribute::~Attribute()
 
 void Attribute::updateAttribute()
 {
+
     if(this->m_exp >= this->m_exp_max)
     {
         this->m_exp = this->m_exp - this->m_exp_max;

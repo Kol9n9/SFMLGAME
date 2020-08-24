@@ -8,7 +8,11 @@ void MainGameState::initPlayer()
 void MainGameState::initEnemies()
 {
     this->m_enemy.push_back(new Rat(sf::Vector2f(100,100)));
+    this->m_enemy.push_back(new Rat(sf::Vector2f(150,100)));
+    this->m_enemy.push_back(new Rat(sf::Vector2f(150,150)));
     this->m_enemy.push_back(new Rat(sf::Vector2f(200,100)));
+    this->m_enemy.push_back(new Rat(sf::Vector2f(200,150)));
+    this->m_enemy.push_back(new Rat(sf::Vector2f(200,200)));
 }
 void MainGameState::initTextTag()
 {

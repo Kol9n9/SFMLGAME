@@ -109,4 +109,9 @@ namespace GUI{
         this->updateTextPosition();
         this->setSize(this->getSizes());
     }
+    void Button::setText(const sf::String &str)
+    {
+        this->text->setText(str);
+        this->updateTextPosition();
+    }
 }

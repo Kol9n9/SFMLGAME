@@ -25,7 +25,7 @@ class PlayerHUD
         void initFont(const std::string &font_file);
         void updateHP();
         void updateEXP();
-
+        void updateLevelButton();
 };
 
 #endif // PLAYERHUD_H

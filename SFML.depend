@@ -1882,7 +1882,7 @@
 1597913642 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\entity.cpp
 	"Entity.h"
 
-1597913733 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\entity.h
+1598250416 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\entity.h
 	<string>
 	"SFML/Graphics.hpp"
 	<iostream>
@@ -1892,14 +1892,14 @@
 1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\hitbox.h
 	"SFML/Graphics.hpp"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\game.cpp
+1598250416 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\game.cpp
 	"Game.h"
 
 1597883138 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\game.h
 	"GUI.h"
 	"MainMenuState.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.h
+1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.h
 	<iostream>
 	<string>
 	<vector>
@@ -1919,25 +1919,27 @@
 	<map>
 	<iostream>
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button.h
+1598258090 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button.h
 	"Button_interface.h"
 	"Label.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button_interface.h
+1598251032 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button_interface.h
 	"GUI.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\label.h
+1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\label.h
 	"GUI.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.h
+1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.h
 	<Button_interface.h>
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.h
+1598250416 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.h
 	<State.h>
 	"../Player.h"
 	"../Rat.h"
+	"../TextTag.h"
+	"../PlayerHUD.h"
 
-1597913898 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\player.h
+1597980267 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\player.h
 	"Entity.h"
 	"Animation.h"
 	<vector>
@@ -1964,59 +1966,60 @@
 	<iostream>
 	"Movement.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button.cpp
+1598258111 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button.cpp
 	"Button.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button_interface.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\button_interface.cpp
 	"Button_interface.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.cpp
 	"Checkbox.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.cpp
 	"Droplist.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.h
+1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.h
 	<GUI.h>
 	"Button.h"
 	"List.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\list.h
+1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\list.h
 	<GUI.h>
 	"Label.h"
 	"Scrollbar.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\scrollbar.h
+1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\scrollbar.h
 	<GUI.h>
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.cpp
 	"GUI.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\label.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\label.cpp
 	"Label.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\list.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\list.cpp
 	"List.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\progressbar.cpp
+1598257820 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\progressbar.cpp
 	"Progressbar.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\progressbar.h
+1598257755 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\progressbar.h
 	<GUI.h>
+	"Label.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\scrollbar.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\scrollbar.cpp
 	"Scrollbar.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\textinput.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\textinput.cpp
 	"TextInput.h"
 
-1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\textinput.h
+1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\textinput.h
 	<Label.h>
 
-1597883138 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main.cpp
+1597979314 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main.cpp
 	"Game.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main2.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main2.cpp
 	"GUI/Button.h"
 	"GUI/Label.h"
 	"GUI/TextInput.h"
@@ -2035,10 +2038,10 @@
 1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\movement.cpp
 	"Movement.h"
 
-1597913894 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\player.cpp
+1597980267 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\player.cpp
 	"Player.h"
 
-1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mainmenustate.cpp
+1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mainmenustate.cpp
 	"MainMenuState.h"
 
 1597883138 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\state.cpp
@@ -2056,25 +2059,25 @@
 1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\hitbox.cpp
 	"Hitbox.h"
 
-1597913719 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.cpp
+1598258317 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.cpp
 	"MainGameState.h"
 
-1597913612 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\enemy.cpp
+1598250416 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\enemy.cpp
 	"Enemy.h"
 
-1597913634 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\enemy.h
+1598250416 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\enemy.h
 	"Entity.h"
 	"Progressbar.h"
 
-1597913707 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\rat.h
+1597980267 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\rat.h
 	"Enemy.h"
 
-1597913698 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\rat.cpp
+1598250416 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\rat.cpp
 	"Rat.h"
 
-1597914064 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\attribute.h
+1598250416 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\attribute.h
 
-1597914089 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\attribute.cpp
+1598257984 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\attribute.cpp
 	"Attribute.h"
 
 1597908979 source:c:\users\79243\desktop\sfmlgame\animation.cpp
@@ -2306,4 +2309,24 @@
 
 1597993185 source:c:\users\79243\desktop\sfmlgame\playerhud.cpp
 	"PlayerHUD.h"
+
+1598250416 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\texttag.h
+	"SFML/Graphics.hpp"
+	<vector>
+	<map>
+	<string>
+	<iostream>
+
+1598258142 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\playerhud.h
+	"SFML/Graphics.hpp"
+	"Button.h"
+	"Progressbar.h"
+	"Attribute.h"
+	<string>
+
+1598258237 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\playerhud.cpp
+	"PlayerHUD.h"
+
+1598250416 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\texttag.cpp
+	"TextTag.h"
 
