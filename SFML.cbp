@@ -105,6 +105,8 @@
 		<Unit filename="Game.h" />
 		<Unit filename="Hitbox.cpp" />
 		<Unit filename="Hitbox.h" />
+		<Unit filename="MapTile.cpp" />
+		<Unit filename="MapTile.h" />
 		<Unit filename="MeleeWeapon.cpp" />
 		<Unit filename="MeleeWeapon.h" />
 		<Unit filename="Movement.cpp" />
@@ -125,6 +127,8 @@
 		<Unit filename="Sword.h" />
 		<Unit filename="TextTag.cpp" />
 		<Unit filename="TextTag.h" />
+		<Unit filename="Tile.cpp" />
+		<Unit filename="Tile.h" />
 		<Unit filename="Timer.cpp" />
 		<Unit filename="Timer.h" />
 		<Unit filename="Weapon.cpp" />

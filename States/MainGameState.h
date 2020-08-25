@@ -7,7 +7,7 @@
 #include "../Rat.h"
 #include "../TextTag.h"
 #include "../PlayerHUD.h"
-
+#include "../MapTile.h"
 class MainGameState : public State
 {
     public:
@@ -25,6 +25,7 @@ class MainGameState : public State
         Player *m_player;
         TextTag *m_textTag;
         PlayerHUD *m_playerHUD;
+        MapTile *m_game_map;
         std::vector<Enemy*>m_enemy;
         //inits
         void initPlayer();

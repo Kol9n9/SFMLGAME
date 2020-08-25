@@ -52,6 +52,12 @@ MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_sta
     this->initEnemies();
     this->initTextTag();
     this->initPlayerHUD();
+
+    this->m_game_map = new MapTile("resouces/grass1.png");
+
+    for(int i(0); i < 10; i++)
+        for(int j(0); j < 10; j++)
+            this->m_game_map->addTile(sf::IntRect(0,0,100,100),sf::Vector2f(100*i,100*j));
     //ctor
 }
 
@@ -107,6 +113,7 @@ void MainGameState::update(const float &dt)
 void MainGameState::render()
 {
     this->target->setView(this->m_view);
+    this->m_game_map->render(this->target);
     if(this->m_player) this->m_player->render(this->target);
     for(auto it = this->m_enemy.begin(); it != this->m_enemy.end(); ++it)
     {
