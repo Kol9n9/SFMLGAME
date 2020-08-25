@@ -1932,7 +1932,7 @@
 1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.h
 	<Button_interface.h>
 
-1598250416 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.h
+1598329382 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.h
 	<State.h>
 	"../Player.h"
 	"../Rat.h"
@@ -2059,7 +2059,7 @@
 1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\hitbox.cpp
 	"Hitbox.h"
 
-1598258317 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.cpp
+1598328786 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.cpp
 	"MainGameState.h"
 
 1598250416 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\enemy.cpp

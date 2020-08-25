@@ -19,6 +19,9 @@ class MainGameState : public State
 
     private:
         //variables
+        sf::View m_view;
+        sf::View m_view_playerHUD;
+        sf::View m_view_default;
         Player *m_player;
         TextTag *m_textTag;
         PlayerHUD *m_playerHUD;
@@ -28,9 +31,10 @@ class MainGameState : public State
         void initEnemies();
         void initTextTag();
         void initPlayerHUD();
+        void initViews();
         //functions
         void updateKeyboard(const float &dt);
-
+        void updateView();
 };
 
 #endif // MAINGAMESTATE_H

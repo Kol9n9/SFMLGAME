@@ -1,7 +1,7 @@
 #include "MainGameState.h"
 void MainGameState::initPlayer()
 {
-    this->m_player = new Player();
+    this->m_player = new Player(sf::Vector2f(10,100));
     this->m_player->getAttribute().setStrength(10);
 
 }
@@ -22,9 +22,32 @@ void MainGameState::initPlayerHUD()
 {
     this->m_playerHUD = new PlayerHUD(&this->m_player->getAttribute(),"GUI/font.ttf");
 }
+void MainGameState::initViews()
+{
+    this->m_view.setSize(
+                    sf::Vector2f(
+                            800,
+                            600
+                            )
+                        );
+    this->m_view.setCenter(
+                    sf::Vector2f(
+                            400,
+                            300
+                            )
+                          );
+
+    this->m_view_default = this->target->getDefaultView();
+
+    this->m_view_playerHUD.setSize(sf::Vector2f(800,600));
+    this->m_view_playerHUD.setCenter(this->m_view_default.getCenter());
+
+
+}
 MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_states)
     : State(target,m_states)
 {
+    this->initViews();
     this->initPlayer();
     this->initEnemies();
     this->initTextTag();
@@ -51,7 +74,9 @@ void MainGameState::update(const float &dt)
 
     this->updateKeyboard(dt);
     this->m_player->update(dt,GUI::GUI::mousePos);
+    this->updateView();
     this->m_textTag->update(dt);
+
     for(auto it = this->m_enemy.begin(); it != this->m_enemy.end(); ++it)
     {
         (*it)->update(dt,GUI::GUI::mousePos);
@@ -81,13 +106,16 @@ void MainGameState::update(const float &dt)
 }
 void MainGameState::render()
 {
+    this->target->setView(this->m_view);
     if(this->m_player) this->m_player->render(this->target);
     for(auto it = this->m_enemy.begin(); it != this->m_enemy.end(); ++it)
     {
         (*it)->render(this->target);
     }
     if(this->m_textTag) this->m_textTag->render(this->target);
+    this->target->setView(this->m_view_playerHUD);
     if(this->m_playerHUD) this->m_playerHUD->render(this->target);
+    this->target->setView(this->m_view_default);
 }
 void MainGameState::updateKeyboard(const float &dt)
 {
@@ -115,4 +143,13 @@ void MainGameState::updateKeyboard(const float &dt)
     {
         this->m_player->attack();
     }
+}
+void MainGameState::updateView()
+{
+    this->m_view.setCenter(
+                    sf::Vector2f(
+                        this->m_player->getPosition().x + 200,
+                        this->m_player->getPosition().y + 100
+                            )
+                          );
 }
