@@ -2092,7 +2092,7 @@
 	<vector>
 	<iostream>
 
-1597993872 source:c:\users\79243\desktop\sfmlgame\attribute.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\attribute.cpp
 	"Attribute.h"
 
 1597993852 c:\users\79243\desktop\sfmlgame\attribute.h
@@ -2117,19 +2117,20 @@
 	"GUI.h"
 	"MainMenuState.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\gui.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\gui.h
 	<iostream>
 	<string>
 	<vector>
 	<cmath>
 	"SFML/Graphics.hpp"
 
-1597883138 c:\users\79243\desktop\sfmlgame\states\mainmenustate.h
+1598438962 c:\users\79243\desktop\sfmlgame\states\mainmenustate.h
 	<State.h>
 	<iostream>
 	"Button.h"
 	"Checkbox.h"
 	"MainGameState.h"
+	"MapEditorState.h"
 
 1597908979 c:\users\79243\desktop\sfmlgame\states\state.h
 	"SFML/Graphics.hpp"
@@ -2137,25 +2138,26 @@
 	<map>
 	<iostream>
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\button.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\button.h
 	"Button_interface.h"
 	"Label.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\button_interface.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\button_interface.h
 	"GUI.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\label.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\label.h
 	"GUI.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\checkbox.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\checkbox.h
 	<Button_interface.h>
 
-1597991909 c:\users\79243\desktop\sfmlgame\states\maingamestate.h
+1598438962 c:\users\79243\desktop\sfmlgame\states\maingamestate.h
 	<State.h>
 	"../Player.h"
 	"../Rat.h"
 	"../TextTag.h"
 	"../PlayerHUD.h"
+	"../MapTile.h"
 
 1597980267 c:\users\79243\desktop\sfmlgame\player.h
 	"Entity.h"
@@ -2191,8 +2193,9 @@
 	"Entity.h"
 	"Progressbar.h"
 
-1597989916 c:\users\79243\desktop\sfmlgame\gui\progressbar.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\progressbar.h
 	<GUI.h>
+	"Label.h"
 
 1597908979 source:c:\users\79243\desktop\sfmlgame\hitbox.cpp
 	"Hitbox.h"
@@ -2230,53 +2233,53 @@
 	<string>
 	<iostream>
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\button.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\button.cpp
 	"Button.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\button_interface.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\button_interface.cpp
 	"Button_interface.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\checkbox.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\checkbox.cpp
 	"Checkbox.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\droplist.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\droplist.cpp
 	"Droplist.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\droplist.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\droplist.h
 	<GUI.h>
 	"Button.h"
 	"List.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\list.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\list.h
 	<GUI.h>
 	"Label.h"
 	"Scrollbar.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\scrollbar.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\scrollbar.h
 	<GUI.h>
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\gui.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\gui.cpp
 	"GUI.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\label.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\label.cpp
 	"Label.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\list.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\list.cpp
 	"List.h"
 
-1597990152 source:c:\users\79243\desktop\sfmlgame\gui\progressbar.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\progressbar.cpp
 	"Progressbar.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\scrollbar.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\scrollbar.cpp
 	"Scrollbar.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\gui\textinput.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\textinput.cpp
 	"TextInput.h"
 
-1597980315 c:\users\79243\desktop\sfmlgame\gui\textinput.h
+1598438962 c:\users\79243\desktop\sfmlgame\gui\textinput.h
 	<Label.h>
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\main2.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\main2.cpp
 	"GUI/Button.h"
 	"GUI/Label.h"
 	"GUI/TextInput.h"
@@ -2290,26 +2293,26 @@
 1597980267 source:c:\users\79243\desktop\sfmlgame\player.cpp
 	"Player.h"
 
-1597990351 source:c:\users\79243\desktop\sfmlgame\rat.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\rat.cpp
 	"Rat.h"
 
-1597980315 source:c:\users\79243\desktop\sfmlgame\states\mainmenustate.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\states\mainmenustate.cpp
 	"MainMenuState.h"
 
 1597987063 source:c:\users\79243\desktop\sfmlgame\texttag.cpp
 	"TextTag.h"
 
-1597993929 source:c:\users\79243\desktop\sfmlgame\states\maingamestate.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\states\maingamestate.cpp
 	"MainGameState.h"
 
-1597993944 c:\users\79243\desktop\sfmlgame\playerhud.h
+1598438962 c:\users\79243\desktop\sfmlgame\playerhud.h
 	"SFML/Graphics.hpp"
 	"Button.h"
 	"Progressbar.h"
 	"Attribute.h"
 	<string>
 
-1597993185 source:c:\users\79243\desktop\sfmlgame\playerhud.cpp
+1598438962 source:c:\users\79243\desktop\sfmlgame\playerhud.cpp
 	"PlayerHUD.h"
 
 1598340848 c:\users\¿À≈ —¿Õƒ–\desktop\Õ» ŒÀ¿…\Û˜Â·‡\‡Î„ÓËÚÏ˚\sfmlgame\texttag.h
@@ -2366,4 +2369,39 @@
 
 1598425877 source:c:\users\¿À≈ —¿Õƒ–\desktop\Õ» ŒÀ¿…\Û˜Â·‡\‡Î„ÓËÚÏ˚\sfmlgame\gui\mousescrollingarea.cpp
 	"MouseScrollingArea.h"
+
+1598447006 c:\users\79243\desktop\sfmlgame\maptile.h
+	"Tile.h"
+	<vector>
+	<string>
+	<fstream>
+	<iostream>
+	<map>
+
+1598447509 c:\users\79243\desktop\sfmlgame\tile.h
+	"SFML/Graphics.hpp"
+	<iostream>
+
+1598444583 c:\users\79243\desktop\sfmlgame\states\mapeditorstate.h
+	<State.h>
+	"../MapTile.h"
+	"Droplist.h"
+	"MouseScrollingArea.h"
+	"Checkbox.h"
+	<map>
+
+1598438962 c:\users\79243\desktop\sfmlgame\gui\mousescrollingarea.h
+	<GUI.h>
+
+1598438962 source:c:\users\79243\desktop\sfmlgame\gui\mousescrollingarea.cpp
+	"MouseScrollingArea.h"
+
+1598447741 source:c:\users\79243\desktop\sfmlgame\maptile.cpp
+	"MapTile.h"
+
+1598447452 source:c:\users\79243\desktop\sfmlgame\tile.cpp
+	"Tile.h"
+
+1598447804 source:c:\users\79243\desktop\sfmlgame\states\mapeditorstate.cpp
+	"MapEditorState.h"
 

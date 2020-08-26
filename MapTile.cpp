@@ -2,6 +2,8 @@
 
 MapTile::MapTile()
 {
+    this->m_tile_edit = nullptr;
+    this->m_tile_hover = nullptr;
     //ctor
 }
 
@@ -17,25 +19,25 @@ MapTile::~MapTile()
     }
     //dtor
 }
-void MapTile::addTile(const int &render_level, const sf::IntRect &rect,const sf::Vector2f &pos)
+void MapTile::addTile(const int &render_level, const sf::IntRect &rect,const sf::Vector2f &pos, const int &tile_type)
 {
-    this->m_tiles[render_level].push_back(new Tile(this->m_texture,rect,pos));
+    this->m_tiles[render_level].push_back(new Tile(this->m_texture,rect,pos,tile_type));
 }
-void MapTile::addTile(const int &render_level, Tile *tile,const sf::Vector2f &pos)
+Tile *MapTile::addTile(const int &render_level, Tile *tile,const sf::Vector2f &pos)
 {
-    std::cout << "Created\n";
-    this->m_tiles[render_level].push_back(tile);
+    Tile *newTile = new Tile(tile);
+    this->m_tiles[render_level].push_back(newTile);
+    this->m_tile_edit = newTile;
+    return this->m_tiles[render_level].back();
 }
 std::map<int, Tile*> MapTile::getLevelTiles(const int &level)
 {
-    std::cout << "1\n";
     std::map<int, Tile*> result;
     for(auto it = this->m_level_tile.begin(); it != this->m_level_tile.end(); ++it)
     {
-        result[(it->first)] = new Tile(this->m_texture,(it->second),sf::Vector2f(0,0));
+        result[(it->first)] = new Tile(this->m_texture,(it->second),sf::Vector2f(0,0),(it->first));
         std::cout << result[(it->first)]->getTile().getGlobalBounds().height << "\n";
     }
-    std::cout << "2\n";
     return result;
 }
 void MapTile::render(sf::RenderTarget *target)
@@ -44,7 +46,20 @@ void MapTile::render(sf::RenderTarget *target)
     {
         for(auto &tile : vec.second)
         {
+            if(tile == this->m_tile_edit) continue;
             tile->render(target);
+        }
+    }
+}
+void MapTile::update(const sf::Vector2f &pos)
+{
+    this->m_tile_hover = nullptr;
+    for(auto &vec : this->m_tiles)
+    {
+        for(auto &tile : vec.second)
+        {
+            tile->update(static_cast<sf::Vector2i>(pos));
+            if(tile->isHover()) {this->m_tile_hover = tile;break;}
         }
     }
 }
@@ -89,6 +104,23 @@ void MapTile::loadLevel()
         level >> pos.x;
         level >> pos.y;
         level >> type;
-        this->addTile(render_level, this->m_level_tile[type],pos);
+        this->addTile(render_level, this->m_level_tile[type],pos, type);
     }
+    level.close();
+    tile.close();
+}
+void MapTile::saveLevel()
+{
+    std::ofstream level("config/level1.cfg");
+    for(auto &vec : this->m_tiles)
+    {
+        for(auto &tile : vec.second)
+        {
+            level << (vec.first) << " ";
+            level << tile->getPosition().x << " ";
+            level << tile->getPosition().y << " ";
+            level << tile->getTileType() << "\n";
+        }
+    }
+    level.close();
 }

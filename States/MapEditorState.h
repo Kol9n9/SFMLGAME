@@ -29,13 +29,20 @@ class MapEditorState : public State
         GUI::Checkbox *m_checkbox_resize;
         GUI::Checkbox *m_checkbox_showed;
 
+
         std::map<int,Tile*> m_level_tiles;
+        Tile *m_current_tile;
+        bool m_created_tile;
+        bool m_edit_tile;
 
         void initMapTile();
         void initView();
         void initDroplists();
         void initMouseScrollingAreas();
         void initCheckboxes();
+
+
+
 
 
         void updateKeyBoard();

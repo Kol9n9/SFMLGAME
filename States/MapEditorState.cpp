@@ -42,12 +42,17 @@ MapEditorState::MapEditorState(sf::RenderWindow *target, std::vector<State*>*m_s
     this->initDroplists();
     this->initMouseScrollingAreas();
     this->initCheckboxes();
+
+    this->m_current_tile = nullptr;
+    this->m_created_tile = false;
+    this->m_edit_tile = false;
+
     //ctor
 }
 
 MapEditorState::~MapEditorState()
 {
-    if(this->m_map_tile) delete this->m_map_tile;
+    delete this->m_map_tile;
     delete this->m_checkbox_move;
     delete this->m_checkbox_resize;
     delete this->m_select_level;
@@ -84,14 +89,47 @@ void MapEditorState::update(const float &dt)
     }
     this->m_map_scrolling->setShowed(this->m_checkbox_showed->isChecked());
 
+
+    this->target->setView(this->m_view);
+    sf::Vector2i mousePos  = sf::Mouse::getPosition(*this->target);
+    sf::Vector2f wordPos = this->target->mapPixelToCoords(mousePos);
+    this->target->setView(this->m_default_view);
+    this->m_map_tile->update(wordPos);
+
+    if(!this->m_created_tile && !this->m_edit_tile && GUI::GUI::mouse_click_event == GUI::LEFTCLICK && this->m_map_tile->getHoverTile())
+    {
+        this->m_current_tile = this->m_map_tile->getHoverTile();
+        this->m_map_tile->setTileEdit(this->m_map_tile->getHoverTile());
+        this->m_edit_tile = true;
+    }
+
     for(auto &tile : this->m_level_tiles)
     {
-        if((tile.second)->isContain(GUI::GUI::mousePos) && GUI::GUI::mouse_click_event == GUI::LEFTCLICK && GUI::GUI::mouse_move_event)
+        (tile.second)->update(GUI::GUI::mousePos);
+        if(!this->m_created_tile && !this->m_edit_tile && (tile.second)->isHover() && GUI::GUI::mouse_click_event == GUI::LEFTCLICK && GUI::GUI::mouse_move_event)
         {
-            this->m_map_tile->addTile(2,(tile.second),sf::Vector2f(200,200));
-            //(tile.second)->Moving(sf::Vector2f(GUI::GUI::mousePos.x - (tile.second)->getTileCenter().x,GUI::GUI::mousePos.y - (tile.second)->getTileCenter().y));
+            this->m_current_tile = this->m_map_tile->addTile(2,(tile.second),sf::Vector2f(200,200));
+            this->m_created_tile = true;
         }
     }
+    if((this->m_created_tile && !this->m_edit_tile) || (!this->m_created_tile && this->m_edit_tile) && GUI::GUI::mouse_click_event != GUI::LEFTCLICK)
+    {
+        this->target->setView(this->m_view);
+        sf::Vector2i mousePos  = sf::Mouse::getPosition(*this->target);
+        sf::Vector2f wordPos = this->target->mapPixelToCoords(mousePos);
+        this->target->setView(this->m_default_view);
+        this->m_current_tile->Moving(sf::Vector2f(wordPos.x - this->m_current_tile->getTileCenter().x,wordPos.y - this->m_current_tile->getTileCenter().y));
+        this->m_created_tile = false;
+        this->m_edit_tile = false;
+        this->m_current_tile = nullptr;
+        this->m_map_tile->setTileEdit(nullptr);
+
+    }
+    if((this->m_created_tile || this->m_edit_tile)&& this->m_current_tile)
+    {
+        this->m_current_tile->Moving(sf::Vector2f(GUI::GUI::mousePos.x - this->m_current_tile->getTileCenter().x,GUI::GUI::mousePos.y - this->m_current_tile->getTileCenter().y));
+    }
+
 
 }
 void MapEditorState::render()
@@ -103,7 +141,7 @@ void MapEditorState::render()
     this->target->setView(this->m_default_view);
     this->m_select_level->render(target);
     this->m_map_scrolling->render(target);
-
+    if(this->m_current_tile) this->m_current_tile->render(target);
 
     this->m_checkbox_move->render(this->target);
     this->m_checkbox_resize->render(this->target);
@@ -153,5 +191,6 @@ void MapEditorState::updateKeyBoard()
 
 void MapEditorState::endState()
 {
+    this->m_map_tile->saveLevel();
     this->m_endState = true;
 }
