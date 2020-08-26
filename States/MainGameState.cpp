@@ -53,12 +53,8 @@ MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_sta
     this->initTextTag();
     this->initPlayerHUD();
 
-    this->m_game_map = new MapTile("resouces/grass1.png");
-
-    for(int i(0); i < 10; i++)
-        for(int j(0); j < 10; j++)
-            this->m_game_map->addTile(sf::IntRect(0,0,100,100),sf::Vector2f(100*i,100*j));
-    //ctor
+    this->m_game_map = new MapTile();
+    this->m_game_map->loadLevel();
 }
 
 MainGameState::~MainGameState()
@@ -72,6 +68,7 @@ MainGameState::~MainGameState()
     if(this->m_player) delete this->m_player;
     if(this->m_textTag) delete this->m_textTag;
     if(this->m_playerHUD) delete this->m_playerHUD;
+    if(this->m_game_map) delete this->m_game_map;
     //dtor
 }
 
