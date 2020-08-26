@@ -5,6 +5,7 @@ namespace GUI{
     sf::Vector2i GUI::mousePos = sf::Vector2i(0,0);
     bool GUI::isAnyGUIMoving = false;
     bool GUI::isAnyGUICorning = false;
+    bool GUI::mouse_move_event = false;
     GUI::GUI(const sf::Vector2f &start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : start_pos(start_pos), sizes(sizes), color_IDLE(c_IDLE), color_HOVER(c_HOVER), color_CLICK(c_CLICK)
     {
@@ -16,6 +17,7 @@ namespace GUI{
         this->a_a = nullptr;
         this->isCorner = false;
         this->isBoxShow = false;
+        this->target = nullptr;
         //ctor
     }
 
@@ -114,19 +116,29 @@ namespace GUI{
     void GUI::Resized()
     {
         if(GUI::isAnyGUICorning) return;
+        if(!this->target)
+        {
+            std::cout << "Target not found. Please input setTarget(sf::RenderWindow *target)\n";
+            return;
+        }
         if(this->isContainCorner())
         {
+            std::cout << "1\n";
             GUI::isAnyGUICorning = true;
             this->isCorner = true;
             sf::Cursor cursor;
+            std::cout << "2\n";
             cursor.loadFromSystem(sf::Cursor::SizeTopLeftBottomRight);
+            std::cout << "2.5\n";
             this->target->setMouseCursor(cursor);
+            std::cout << "3\n";
         }
     }
     void GUI::updateEvents(sf::RenderWindow *target, sf::Event &events)
     {
         mousePos = static_cast<sf::Vector2i>(target->mapPixelToCoords(sf::Mouse::getPosition(*target)));
         GUI::mouse_wheel_event = MOUSE_WHEEL_EVENTS::NONEWHEEL;
+        GUI::mouse_move_event = false;
         switch(events.type)
         {
             case sf::Event::MouseButtonPressed:
@@ -198,6 +210,11 @@ namespace GUI{
                         break;
                     }
                 }
+                break;
+            }
+            case sf::Event::MouseMoved:
+            {
+                GUI::mouse_move_event = true;
                 break;
             }
         }

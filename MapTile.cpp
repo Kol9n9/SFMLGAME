@@ -21,7 +21,23 @@ void MapTile::addTile(const int &render_level, const sf::IntRect &rect,const sf:
 {
     this->m_tiles[render_level].push_back(new Tile(this->m_texture,rect,pos));
 }
-
+void MapTile::addTile(const int &render_level, Tile *tile,const sf::Vector2f &pos)
+{
+    std::cout << "Created\n";
+    this->m_tiles[render_level].push_back(tile);
+}
+std::map<int, Tile*> MapTile::getLevelTiles(const int &level)
+{
+    std::cout << "1\n";
+    std::map<int, Tile*> result;
+    for(auto it = this->m_level_tile.begin(); it != this->m_level_tile.end(); ++it)
+    {
+        result[(it->first)] = new Tile(this->m_texture,(it->second),sf::Vector2f(0,0));
+        std::cout << result[(it->first)]->getTile().getGlobalBounds().height << "\n";
+    }
+    std::cout << "2\n";
+    return result;
+}
 void MapTile::render(sf::RenderTarget *target)
 {
     for(auto &vec : this->m_tiles)

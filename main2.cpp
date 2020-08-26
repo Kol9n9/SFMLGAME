@@ -94,7 +94,7 @@ void changeResolution(void *object)
     res->window->setView(window1View);
 
 }
-int main()
+int t_main()
 {
     sf::ContextSettings set;
     set.antialiasingLevel = 0;

@@ -69,6 +69,7 @@ namespace GUI{
             const bool &isVisibled() {return this->isVis;}
             static MOUSE_CLICK_EVENTS mouse_click_event;
             static MOUSE_WHEEL_EVENTS mouse_wheel_event;
+            static bool mouse_move_event;
             static bool isAnyGUIMoving;
             static bool isAnyGUICorning;
             static sf::Vector2i mousePos;

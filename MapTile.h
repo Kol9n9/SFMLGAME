@@ -14,6 +14,9 @@ class MapTile
         virtual ~MapTile();
         void render(sf::RenderTarget *target);
         void addTile(const int &render_level, const sf::IntRect &rect,const sf::Vector2f &pos);
+        void addTile(const int &render_level, Tile *tile, const sf::Vector2f &pos);
+
+        std::map<int, Tile*> getLevelTiles(const int &level = 0);
 
         void loadLevel();
     protected:

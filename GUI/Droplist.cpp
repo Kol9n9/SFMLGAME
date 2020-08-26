@@ -97,7 +97,7 @@ namespace GUI{
         this->setStartPos(sf::Vector2f(pos.x,pos.y));
         this->shape.setPosition(pos);
         this->but->setPosition(sf::Vector2f(pos.x + this->getSizes().x - this->butWidth, pos.y));
-        this->list->setPosition(sf::Vector2f(pos.x,pos.y+this->getSizes().y + this->list->getBoxBorder()));
+        if(this->list) this->list->setPosition(sf::Vector2f(pos.x,pos.y+this->getSizes().y + this->list->getBoxBorder()));
     }
     void Droplist::Moving()
     {
