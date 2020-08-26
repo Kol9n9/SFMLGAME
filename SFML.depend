@@ -1906,12 +1906,13 @@
 	<cmath>
 	"SFML/Graphics.hpp"
 
-1598340848 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mainmenustate.h
+1598419097 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mainmenustate.h
 	<State.h>
 	<iostream>
 	"Button.h"
 	"Checkbox.h"
 	"MainGameState.h"
+	"MapEditorState.h"
 
 1597908979 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\state.h
 	"SFML/Graphics.hpp"
@@ -2017,10 +2018,10 @@
 1597980315 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\textinput.h
 	<Label.h>
 
-1597979314 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main.cpp
+1598421392 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main.cpp
 	"Game.h"
 
-1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main2.cpp
+1598421395 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\main2.cpp
 	"GUI/Button.h"
 	"GUI/Label.h"
 	"GUI/TextInput.h"
@@ -2042,7 +2043,7 @@
 1598340848 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\player.cpp
 	"Player.h"
 
-1597980315 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mainmenustate.cpp
+1598419131 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mainmenustate.cpp
 	"MainMenuState.h"
 
 1597883138 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\state.cpp
@@ -2060,7 +2061,7 @@
 1597908979 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\hitbox.cpp
 	"Hitbox.h"
 
-1598415772 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.cpp
+1598417942 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.cpp
 	"MainGameState.h"
 
 1598340848 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\enemy.cpp
@@ -2347,4 +2348,12 @@
 	<fstream>
 	<iostream>
 	<map>
+
+1598420061 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.h
+	<State.h>
+	"../MapTile.h"
+	"Droplist.h"
+
+1598421380 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.cpp
+	"MapEditorState.h"
 

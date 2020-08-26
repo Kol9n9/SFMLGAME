@@ -121,6 +121,8 @@
 		<Unit filename="States/MainGameState.h" />
 		<Unit filename="States/MainMenuState.cpp" />
 		<Unit filename="States/MainMenuState.h" />
+		<Unit filename="States/MapEditorState.cpp" />
+		<Unit filename="States/MapEditorState.h" />
 		<Unit filename="States/State.cpp" />
 		<Unit filename="States/State.h" />
 		<Unit filename="Sword.cpp" />

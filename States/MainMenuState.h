@@ -6,6 +6,7 @@
 #include "Button.h"
 #include "Checkbox.h"
 #include "MainGameState.h"
+#include "MapEditorState.h"
 
 
 class MainMenuState : public State
@@ -48,6 +49,7 @@ class MainMenuState : public State
         //functions
         void cb_newgame();
         void cb_settings();
+        void cb_map_editor();
         void cb_credits();
         void cb_quit();
 };

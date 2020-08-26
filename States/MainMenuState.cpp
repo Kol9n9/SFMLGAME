@@ -9,20 +9,24 @@ void MainMenuState::initButtons()
 
 
 
-    this->m_buttons["NEW_GAME"] = new GUI::Button(new GUI::Point(37,93),sf::Vector2f(120,50),
+    this->m_buttons["NEW_GAME"] = new GUI::Button(new GUI::Point(37,87),sf::Vector2f(120,50),
                     new GUI::Label(new GUI::Point(0,0),"New Game",&m_font,25,sf::Color(255,255,255),sf::Color(0,255,255),sf::Color(255,255,255)),
                     false, sf::Color(255,255,255),sf::Color(255,255,255),sf::Color(255,255,255));
-    this->m_buttons["SETTINGS"] = new GUI::Button(new GUI::Point(37,148),sf::Vector2f(120,50),
+    this->m_buttons["SETTINGS"] = new GUI::Button(new GUI::Point(37,138),sf::Vector2f(120,50),
                     new GUI::Label(new GUI::Point(0,0),"Settings",&m_font,25,sf::Color(255,255,255),sf::Color(0,255,255),sf::Color(255,255,255)),
                     false, sf::Color(255,255,255),sf::Color(255,255,255),sf::Color(255,255,255));
-    this->m_buttons["CREDITS"] = new GUI::Button(new GUI::Point(37,204),sf::Vector2f(120,50),
+    this->m_buttons["CREDITS"] = new GUI::Button(new GUI::Point(37,242),sf::Vector2f(120,50),
                     new GUI::Label(new GUI::Point(0,0),"Credits",&m_font,25,sf::Color(255,255,255),sf::Color(0,255,255),sf::Color(255,255,255)),
                     false, sf::Color(255,255,255),sf::Color(255,255,255),sf::Color(255,255,255));
-    this->m_buttons["QUIT"] = new GUI::Button(new GUI::Point(37,260),sf::Vector2f(120,50),
+    this->m_buttons["QUIT"] = new GUI::Button(new GUI::Point(37,296),sf::Vector2f(120,50),
                     new GUI::Label(new GUI::Point(0,0),"Quit",&m_font,25,sf::Color(255,255,255),sf::Color(0,255,255),sf::Color(255,255,255)),
+                    false, sf::Color(255,255,255),sf::Color(255,255,255),sf::Color(255,255,255));
+    this->m_buttons["MAP_EDITOR"] = new GUI::Button(new GUI::Point(37,190),sf::Vector2f(120,50),
+                    new GUI::Label(new GUI::Point(0,0),"Map Editor",&m_font,25,sf::Color(255,255,255),sf::Color(0,255,255),sf::Color(255,255,255)),
                     false, sf::Color(255,255,255),sf::Color(255,255,255),sf::Color(255,255,255));
     this->m_buttons["NEW_GAME"].callback = &MainMenuState::cb_newgame;
     this->m_buttons["SETTINGS"].callback = &MainMenuState::cb_settings;
+    this->m_buttons["MAP_EDITOR"].callback = &MainMenuState::cb_map_editor;
     this->m_buttons["CREDITS"].callback = &MainMenuState::cb_credits;
     this->m_buttons["QUIT"].callback = &MainMenuState::cb_quit;
 
@@ -58,7 +62,7 @@ void MainMenuState::update(const float &dt)
         }
     }
 
-    //this->m_check->update();
+    this->m_check->update();
 }
 void MainMenuState::render()
 {
@@ -67,7 +71,7 @@ void MainMenuState::render()
         for(auto it = this->m_buttons.begin(); it != this->m_buttons.end(); ++it)
             (it->second).button->render(this->target);
     }
-    //this->m_check->render();
+    this->m_check->render(this->target);
 }
 void MainMenuState::cb_newgame()
 {
@@ -87,4 +91,9 @@ void MainMenuState::cb_quit()
 {
     std::cout << "cb_quit\n";
     this->m_endState = true;
+}
+void MainMenuState::cb_map_editor()
+{
+    std::cout << "cb_map_editor\n";
+    this->m_states->push_back(new MapEditorState(this->target,this->m_states));
 }
