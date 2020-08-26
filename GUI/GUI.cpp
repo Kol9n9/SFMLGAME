@@ -5,8 +5,8 @@ namespace GUI{
     sf::Vector2i GUI::mousePos = sf::Vector2i(0,0);
     bool GUI::isAnyGUIMoving = false;
     bool GUI::isAnyGUICorning = false;
-    GUI::GUI(const Point *start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
-        : start_pos(*start_pos), sizes(sizes), color_IDLE(c_IDLE), color_HOVER(c_HOVER), color_CLICK(c_CLICK)
+    GUI::GUI(const sf::Vector2f &start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+        : start_pos(start_pos), sizes(sizes), color_IDLE(c_IDLE), color_HOVER(c_HOVER), color_CLICK(c_CLICK)
     {
         this->cb_Click = nullptr;
         this->status = GUI_STATUS::IDLE;

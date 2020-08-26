@@ -7,7 +7,7 @@ namespace GUI{
     class Scrollbar : public GUI
     {
         public:
-            Scrollbar(const Point *start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Scrollbar(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Scrollbar();
             void render(sf::RenderTarget *target);
             void update();

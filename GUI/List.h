@@ -34,7 +34,7 @@ namespace GUI{
         public:
 
 
-            List(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            List(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~List();
             void update();
             void render(sf::RenderTarget *target);

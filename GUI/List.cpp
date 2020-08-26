@@ -1,10 +1,10 @@
 #include "List.h"
 namespace GUI{
-    List::List(const Point *start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    List::List(const sf::Vector2f &start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : GUI(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK)
     {
         this->list_box.setFillColor(sf::Color::White);
-        this->list_box.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+        this->list_box.setPosition(this->getStartPos());
         this->list_box.setSize(this->getSizes());
         this->boxBorder = 5;
         this->list_box.setOutlineThickness(this->boxBorder);
@@ -16,10 +16,10 @@ namespace GUI{
         this->item_height = this->getSizes().y / this->item_height_count;
         this->item_current_head = 0;
         this->sliderSize = 20;
-        float x = this->getStartPoint().x + this->getSizes().x - this->sliderSize;
-        this->scr = new Scrollbar(new Point(x,this->getStartPoint().y),sf::Vector2f(this->sliderSize,this->getSizes().y),
+        float x = this->getStartPos().x + this->getSizes().x - this->sliderSize;
+        this->scr = new Scrollbar(sf::Vector2f(x,this->getStartPos().y),sf::Vector2f(this->sliderSize,this->getSizes().y),
                                   sf::Color(240,240,240),sf::Color(206,206,206),sf::Color(167,167,167),sf::Color(136,136,136));
-        this->scr->setScrollingArea(Point(this->getStartPoint().x,this->getStartPoint().y),Point(this->getStartPoint().x + this->getSizes().x,this->getStartPoint().y + this->getSizes().y));
+        this->scr->setScrollingArea(Point(this->getStartPos().x,this->getStartPos().y),Point(this->getStartPos().x + this->getSizes().x,this->getStartPos().y + this->getSizes().y));
         this->isSliderShowed = false;
         this->isSliderHidden = false;
         this->isDropping = false;
@@ -103,7 +103,7 @@ namespace GUI{
             sf::RectangleShape debug_shape;
             debug_shape.setOutlineColor(sf::Color::Red);
             debug_shape.setOutlineThickness(5);
-            debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+            debug_shape.setPosition(this->getStartPos());
             debug_shape.setSize(this->getSizes());
             target->draw(debug_shape);
         }
@@ -118,13 +118,13 @@ namespace GUI{
                 if(this->active_item == (it->first))
                 {
                     this->item_box.setFillColor(this->getColorCLICK());
-                    this->item_box.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y + this->item_height * i));
+                    this->item_box.setPosition(sf::Vector2f(this->getStartPos().x,this->getStartPos().y + this->item_height * i));
                     sf::Vector2f sz(this->getSizes().x,this->item_height+1);
                     if(this->scr->isVisibled()) sz.x -= this->sliderSize;
                     this->item_box.setSize(sz);
                     target->draw(this->item_box);
                 }
-                (it->second).text->setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y+(this->item_height+1)*i));
+                (it->second).text->setPosition(sf::Vector2f(this->getStartPos().x,this->getStartPos().y+(this->item_height+1)*i));
                 (it->second).text->render(target);
                 i++;
             }
@@ -222,7 +222,7 @@ namespace GUI{
     {
         sf::String str2 = L"Строка ";
         str2 += std::to_string(this->currentIndex);
-        this->insert(new Label(new Point(0,0),str2,font,textSize,c_IDLE,c_HOVER,c_CLICK));
+        this->insert(new Label(sf::Vector2f(0,0),str2,font,textSize,c_IDLE,c_HOVER,c_CLICK));
         if(this->items.size() - 1 < this->item_height_count) return;
         this->item_current_head++;
         this->scr->setSliderIndex(this->scr->getSliderIndex()+1);
@@ -240,12 +240,12 @@ namespace GUI{
     }
     void List::setPosition(const sf::Vector2f &pos)
     {
-        this->setStartPoint(Point(pos.x,pos.y));
+        this->setStartPos(sf::Vector2f(pos.x,pos.y));
         this->list_box.setPosition(pos);
         //new Point(x,this->getStartPoint().y),new Point(this->getStartPoint().x + this->getSizes().x, this->getStartPoint().y + this->getSizes().y)
-        float x = this->getStartPoint().x + this->getSizes().x - this->sliderSize;
-        this->scr->setPosition(sf::Vector2f(x,this->getStartPoint().y));
-        this->scr->setScrollingArea(Point(this->getStartPoint().x,this->getStartPoint().y),Point(this->getStartPoint().x + this->getSizes().x,this->getStartPoint().y + this->getSizes().y));
+        float x = this->getStartPos().x + this->getSizes().x - this->sliderSize;
+        this->scr->setPosition(sf::Vector2f(x,this->getStartPos().y));
+        this->scr->setScrollingArea(Point(this->getStartPos().x,this->getStartPos().y),Point(this->getStartPos().x + this->getSizes().x,this->getStartPos().y + this->getSizes().y));
         this->scr->setSliderIndex(this->scr->getSliderIndex());
     }
     List_Item &List::getActiveItem()
@@ -269,10 +269,10 @@ namespace GUI{
         this->list_box.setSize(size);
         this->updateItemHeight();
 
-        float x = this->getStartPoint().x + this->getSizes().x - this->sliderSize;
-        this->scr->setPosition(sf::Vector2f(x,this->getStartPoint().y));
+        float x = this->getStartPos().x + this->getSizes().x - this->sliderSize;
+        this->scr->setPosition(sf::Vector2f(x,this->getStartPos().y));
         this->scr->setSize(sf::Vector2f(this->sliderSize,size.y));
-        this->scr->setScrollingArea(Point(this->getStartPoint().x,this->getStartPoint().y),Point(this->getStartPoint().x + size.x,this->getStartPoint().y + size.y));
+        this->scr->setScrollingArea(Point(this->getStartPos().x,this->getStartPos().y),Point(this->getStartPos().x + size.x,this->getStartPos().y + size.y));
         this->scr->setSliderIndex(this->scr->getSliderIndex());
     }
     void List::updateItemHeight()

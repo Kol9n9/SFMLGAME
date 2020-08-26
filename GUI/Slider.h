@@ -7,7 +7,7 @@ namespace GUI{
     class Slider : public GUI
     {
         public:
-            Slider(sf::RenderWindow *target, const Point *start_pos, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Slider(sf::RenderWindow *target, const sf::Vector2f &start_pos, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Slider();
             void update();
             void render();

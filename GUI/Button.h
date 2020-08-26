@@ -8,8 +8,8 @@ namespace GUI{
     class Button : public Button_interface
     {
         public:
-            Button(const Point *start_pos, const sf::Vector2f &sizes, Label *str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
-            Button(const Point *start_pos, const sf::Vector2f &sizes, const std::string &str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Button(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, Label *str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Button(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, const std::string &str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Button();
             void update();
             void render(sf::RenderTarget *target);

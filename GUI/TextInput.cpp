@@ -1,17 +1,17 @@
 #include "TextInput.h"
 
 namespace GUI{
-    TextInput::TextInput(const Point *start_pos, const sf::Vector2f &sizes, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    TextInput::TextInput(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : Label(start_pos,"",font,textSize,c_IDLE,c_HOVER,c_CLICK)
     {
         this->setSizes(sizes);
         this->str = "Text input";
         this->text.setFont(*font);
         this->text.setCharacterSize(this->textSize);
-        this->text.setPosition(sf::Vector2f(start_pos->x,start_pos->y));
+        this->text.setPosition(sf::Vector2f(start_pos.x,start_pos.y));
         this->text.setString(this->str);
         this->isActive = false;
-        this->text_box.setPosition(sf::Vector2f(start_pos->x,start_pos->y+2));
+        this->text_box.setPosition(sf::Vector2f(start_pos.x,start_pos.y+2));
         this->text_box.setSize(this->getSizes());
         this->text_box.setOutlineColor(sf::Color(127,127,127));
         this->text_box.setOutlineThickness(5);
@@ -62,7 +62,7 @@ namespace GUI{
             sf::RectangleShape debug_shape;
             debug_shape.setOutlineColor(sf::Color::Red);
             debug_shape.setOutlineThickness(5);
-            debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+            debug_shape.setPosition(this->getStartPos());
             debug_shape.setSize(this->getSizes());
             target->draw(debug_shape);
         }
@@ -71,7 +71,7 @@ namespace GUI{
     }
     void TextInput::setPosition(const sf::Vector2f &pos)
     {
-        this->setStartPoint(Point(pos.x,pos.y));
+        this->setStartPos(pos);
         this->text.setPosition(pos);
     }
     void TextInput::setSize(const sf::Vector2f &size)

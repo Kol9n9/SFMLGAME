@@ -1,12 +1,12 @@
 #include "Label.h"
 namespace GUI{
-    Label::Label(const Point *start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    Label::Label(const sf::Vector2f &start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : GUI(start_pos,sf::Vector2f(0,0),c_IDLE,c_HOVER,c_CLICK), str(str), font(font), textSize(textSize)
     {
         /*std::string utf8 = str.c_str();
         sf::String t = sf::String::fromUtf8(utf8.begin(),utf8.end());*/
         this->text.setString(str);
-        this->text.setPosition(this->getStartPoint().x,this->getStartPoint().y);
+        this->text.setPosition(this->getStartPos());
         this->text.setFont(*this->font);
         this->text.setCharacterSize(this->textSize);
         this->setTextBoxSize();
@@ -77,7 +77,7 @@ namespace GUI{
             sf::RectangleShape debug_shape;
             debug_shape.setOutlineColor(sf::Color::Red);
             debug_shape.setOutlineThickness(5);
-            debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+            debug_shape.setPosition(this->getStartPos());
             debug_shape.setSize(this->getSizes());
             target->draw(debug_shape);
         }
@@ -108,7 +108,7 @@ namespace GUI{
     }
     void Label::setPosition(const sf::Vector2f &pos)
     {
-        this->setStartPoint(Point(pos.x,pos.y));
+        this->setStartPos(sf::Vector2f(pos.x,pos.y));
         this->text.setPosition(pos);
     }
     void Label::setBoxSize(const sf::Vector2f &size)

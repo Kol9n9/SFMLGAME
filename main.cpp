@@ -1,5 +1,5 @@
 #include "Game.h"
-int main()
+int t_main()
 {
     Game game;
     game.run();

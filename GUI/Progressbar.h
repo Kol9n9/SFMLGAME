@@ -7,8 +7,8 @@ namespace GUI{
     class Progressbar : public GUI
     {
         public:
-            Progressbar(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
-            Progressbar(const Point *start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Progressbar(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Progressbar(const sf::Vector2f &start_pos, const float &rad, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Progressbar();
             void update();
             void render(sf::RenderTarget *target);

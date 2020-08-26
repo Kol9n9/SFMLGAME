@@ -1,6 +1,6 @@
 #include "Button.h"
 namespace GUI{
-    Button::Button(const Point *start_pos, const sf::Vector2f &sizes, Label *str, bool isV, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    Button::Button(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, Label *str, bool isV, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : Button_interface(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK), isBoxVisible(isV)
     {
         this->text = str;
@@ -8,7 +8,7 @@ namespace GUI{
         //sf::Vector2f size = this->text->getSizes();
         //ctor
     }
-    Button::Button(const Point *start_pos, const sf::Vector2f &sizes, const std::string &str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    Button::Button(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, const std::string &str,bool isV,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : Button_interface(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK), isBoxVisible(isV)
     {
         this->text = NULL;
@@ -32,7 +32,7 @@ namespace GUI{
             sf::RectangleShape debug_shape;
             debug_shape.setOutlineColor(sf::Color::Red);
             debug_shape.setOutlineThickness(5);
-            debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+            debug_shape.setPosition(this->getStartPos());
             debug_shape.setSize(this->getSizes());
             this->target->draw(debug_shape);
         }
@@ -85,12 +85,12 @@ namespace GUI{
     {
         this->text_offset.x = (this->getSizes().x - this->text->getSizes().x)/2;
         this->text_offset.y = (this->getSizes().y - this->text->getSizes().y)/2-this->text->getSizes().y/2;
-        sf::Vector2f pos(this->text_offset.x + this->getStartPoint().x,this->text_offset.y + this->getStartPoint().y);
+        sf::Vector2f pos(this->text_offset.x + this->getStartPos().x,this->text_offset.y + this->getStartPos().y);
         this->text->setPosition(pos);
     }
     void Button::setPosition(const sf::Vector2f &pos)
     {
-        this->setStartPoint(Point(pos.x,pos.y));
+        this->setStartPos(sf::Vector2f(pos.x,pos.y));
         if(this->text) this->text->setPosition(this->text_offset+pos);
         this->getBox().setPosition(pos);
     }

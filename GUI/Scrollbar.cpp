@@ -1,16 +1,16 @@
 #include "Scrollbar.h"
 namespace GUI{
     bool Scrollbar::isSelectedSlider = false;
-    Scrollbar::Scrollbar(const Point *start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    Scrollbar::Scrollbar(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Color scr_IDLE, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : GUI(start_pos,sizes,scr_IDLE,scr_IDLE,scr_IDLE), sliderIDLE(c_IDLE), sliderHOVER(c_HOVER), sliderCLICK(c_CLICK)
     {
         this->scrollbar.setFillColor(scr_IDLE);
-        this->scrollbar.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+        this->scrollbar.setPosition(this->getStartPos());
         this->scrollbar.setSize(this->getSizes());
 
         this->type = (this->getSizes().x >= this->getSizes().y) ? TYPE::HORIZONTAL : TYPE::VERTICAL;
 
-        this->slider.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+        this->slider.setPosition(this->getStartPos());
         this->slider.setFillColor(sliderIDLE);
         this->sliderCountPos = 2;
 
@@ -19,8 +19,8 @@ namespace GUI{
         this->sliderCurrentIndex = 0;
 
         this->isUpdateIndex = false;
-        this->startScrollingArea = Point(this->getStartPoint().x,this->getStartPoint().y);
-        this->endScrollingArea = Point(this->getStartPoint().x + this->getSizes().x ,this->getStartPoint().y + this->getSizes().y);
+        this->startScrollingArea = Point(this->getStartPos().x,this->getStartPos().y);
+        this->endScrollingArea = Point(this->getStartPos().x + this->getSizes().x ,this->getStartPos().y + this->getSizes().y);
     }
     Scrollbar::~Scrollbar()
     {
@@ -74,7 +74,7 @@ namespace GUI{
             sf::RectangleShape debug_shape;
             debug_shape.setOutlineColor(sf::Color::Red);
             debug_shape.setOutlineThickness(5);
-            debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+            debug_shape.setPosition(this->getStartPos());
             debug_shape.setSize(this->getSizes());
             target->draw(debug_shape);
         }
@@ -93,8 +93,8 @@ namespace GUI{
     }
     void Scrollbar::updateSliderPos()
     {
-        float sliderPosX = this->getStartPoint().x;
-        float sliderPosY = this->getStartPoint().y;
+        float sliderPosX = this->getStartPos().x;
+        float sliderPosY = this->getStartPos().y;
 
         if(this->type == TYPE::HORIZONTAL) sliderPosX += (this->getSizes().x / this->sliderCountPos) * this->sliderCurrentIndex;
         else sliderPosY += (this->getSizes().y / this->sliderCountPos) * this->sliderCurrentIndex;
@@ -111,7 +111,7 @@ namespace GUI{
     }
     void Scrollbar::setPosition(const sf::Vector2f &pos)
     {
-        this->setStartPoint(Point(pos.x,pos.y));
+        this->setStartPos(pos);
         this->slider.setPosition(pos);
         this->scrollbar.setPosition(pos);
     }
@@ -130,23 +130,23 @@ namespace GUI{
         int newIndex = -1;
         if(this->type == TYPE::HORIZONTAL)
         {
-            float max_limit_x = this->getStartPoint().x + this->getSizes().x - this->slider.getSize().x;
-            float min_limit_x = this->getStartPoint().x;
-            float limit_y = this->getStartPoint().y;
+            float max_limit_x = this->getStartPos().x + this->getSizes().x - this->slider.getSize().x;
+            float min_limit_x = this->getStartPos().x;
+            float limit_y = this->getStartPos().y;
             if(newPos.x > max_limit_x) newPos.x = max_limit_x;
             if(newPos.x < min_limit_x) newPos.x = min_limit_x;
             newPos.y = limit_y;
-            newIndex = (this->slider.getPosition().x - this->getStartPoint().x + this->slider.getSize().x / 2) / (this->getSizes().x / this->sliderCountPos);
+            newIndex = (this->slider.getPosition().x - this->getStartPos().x + this->slider.getSize().x / 2) / (this->getSizes().x / this->sliderCountPos);
         }
         if(this->type == TYPE::VERTICAL)
         {
-            float limit_x = this->getStartPoint().x;
-            float min_limit_y = this->getStartPoint().y;
-            float max_limit_y = this->getStartPoint().y + this->getSizes().y - this->slider.getSize().y;
+            float limit_x = this->getStartPos().x;
+            float min_limit_y = this->getStartPos().y;
+            float max_limit_y = this->getStartPos().y + this->getSizes().y - this->slider.getSize().y;
             if(newPos.y > max_limit_y) newPos.y = max_limit_y;
             if(newPos.y < min_limit_y) newPos.y = min_limit_y;
             newPos.x = limit_x;
-            newIndex = (this->slider.getPosition().y - this->getStartPoint().y + this->slider.getSize().x / 2) / (this->getSizes().y / this->sliderCountPos);
+            newIndex = (this->slider.getPosition().y - this->getStartPos().y + this->slider.getSize().x / 2) / (this->getSizes().y / this->sliderCountPos);
         }
         if(this->sliderCurrentIndex != newIndex)
         {

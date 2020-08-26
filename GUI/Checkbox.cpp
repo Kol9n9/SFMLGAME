@@ -1,7 +1,7 @@
 #include "Checkbox.h"
 
 namespace GUI{
-    Checkbox::Checkbox(const Point *start_pos, const int& sz, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    Checkbox::Checkbox(const sf::Vector2f &start_pos, const int& sz, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : Button_interface(start_pos,sf::Vector2f(sz,sz),c_IDLE,c_HOVER,c_CLICK)
     {
         this->getBox().setOutlineColor(this->getColorIDLE());
@@ -55,7 +55,7 @@ namespace GUI{
             sf::RectangleShape debug_shape;
             debug_shape.setOutlineColor(sf::Color::Red);
             debug_shape.setOutlineThickness(5);
-            debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+            debug_shape.setPosition(this->getStartPos());
             debug_shape.setSize(this->getSizes());
             target->draw(debug_shape);
         }
@@ -71,13 +71,13 @@ namespace GUI{
     }
     void Checkbox::setPosition(const sf::Vector2f &pos)
     {
-        this->setStartPoint(Point(pos.x,pos.y));
+        this->setStartPos(sf::Vector2f(pos.x,pos.y));
         this->getBox().setPosition(pos);
         this->updateLinesPosition();
     }
     void Checkbox::updateLinesPosition()
     {
-        this->line1.setPosition(sf::Vector2f(this->getStartPoint().x + (this->getSizes().x - this->lineWidth), this->getStartPoint().y + this->lineWidth/2));
+        this->line1.setPosition(sf::Vector2f(this->getStartPos().x + (this->getSizes().x - this->lineWidth), this->getStartPos().y + this->lineWidth/2));
         int posX = this->line1.getGlobalBounds().left - this->line2.getGlobalBounds().width + this->lineWidth + this->lineWidth/2 - 1;
         int posY = this->line1.getGlobalBounds().top + this->line1.getGlobalBounds().height - this->line2.getGlobalBounds().height + this->lineWidth - this->lineWidth/4 - 1;
         this->line2.setPosition(sf::Vector2f(posX,posY));

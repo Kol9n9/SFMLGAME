@@ -1,15 +1,15 @@
 #include "Droplist.h"
 namespace GUI{
-    Droplist::Droplist(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
+    Droplist::Droplist(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : GUI(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK)
     {
-        this->shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+        this->shape.setPosition(this->getStartPos());
         this->shape.setSize(this->getSizes());
         this->shape.setOutlineColor(sf::Color(235,235,235));
         this->shape.setOutlineThickness(4);
         this->butWidth = 30;
-        float butPosX = this->getStartPoint().x + this->getSizes().x;
-        this->but = new Button(new Point(butPosX - this->butWidth,this->getStartPoint().y),sf::Vector2f(this->butWidth,this->getSizes().y),
+        float butPosX = this->getStartPos().x + this->getSizes().x;
+        this->but = new Button(sf::Vector2f(butPosX - this->butWidth,this->getStartPos().y),sf::Vector2f(this->butWidth,this->getSizes().y),
                                "",true,sf::Color(127,127,127),sf::Color(0,127,0),sf::Color(0,127,0));
         this->list = nullptr;
         this->text.setString("");
@@ -75,26 +75,26 @@ namespace GUI{
             sf::RectangleShape debug_shape;
             debug_shape.setOutlineColor(sf::Color::Red);
             debug_shape.setOutlineThickness(5);
-            debug_shape.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+            debug_shape.setPosition(this->getStartPos());
             debug_shape.setSize(this->getSizes());
             target->draw(debug_shape);
         }
         target->draw(this->shape);
         target->draw(this->but->getBox());
         if(this->list && this->isListVisible) this->list->render(target);
-        this->text.setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y));
+        this->text.setPosition(this->getStartPos());
         target->draw(this->text);
     }
     void Droplist::setList(List *list)
     {
         this->list = list;
         this->list->setSize(sf::Vector2f(this->getSizes().x,this->list->getSizes().y));
-        this->list->setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y+this->getSizes().y+this->list->getBoxBorder()));
+        this->list->setPosition(sf::Vector2f(this->getStartPos().x,this->getStartPos().y+this->getSizes().y+this->list->getBoxBorder()));
 
     }
     void Droplist::setPosition(const sf::Vector2f &pos)
     {
-        this->setStartPoint(Point(pos.x,pos.y));
+        this->setStartPos(sf::Vector2f(pos.x,pos.y));
         this->shape.setPosition(pos);
         this->but->setPosition(sf::Vector2f(pos.x + this->getSizes().x - this->butWidth, pos.y));
         this->list->setPosition(sf::Vector2f(pos.x,pos.y+this->getSizes().y + this->list->getBoxBorder()));
@@ -113,7 +113,7 @@ namespace GUI{
     void Droplist::Resizing()
     {
         this->setSize(this->getSizes());
-        this->but->setPosition(sf::Vector2f(this->getStartPoint().x + this->getSizes().x - this->butWidth, this->getStartPoint().y));
-        if(this->list) this->list->setPosition(sf::Vector2f(this->getStartPoint().x,this->getStartPoint().y+this->getSizes().y+this->list->getBoxBorder()));
+        this->but->setPosition(sf::Vector2f(this->getStartPos().x + this->getSizes().x - this->butWidth, this->getStartPos().y));
+        if(this->list) this->list->setPosition(sf::Vector2f(this->getStartPos().x,this->getStartPos().y+this->getSizes().y+this->list->getBoxBorder()));
     }
 }

@@ -2,18 +2,18 @@
 
 void PlayerHUD::initHUD()
 {
-    this->m_level_button = new GUI::Button(new GUI::Point(0,0),sf::Vector2f(70,70),
-                        new GUI::Label(new GUI::Point(0,0),"1",&this->m_font,40,sf::Color(0,0,0),sf::Color(255,255,255),sf::Color(255,255,255)),
+    this->m_level_button = new GUI::Button(sf::Vector2f(0,0),sf::Vector2f(70,70),
+                        new GUI::Label(sf::Vector2f(0,0),"1",&this->m_font,40,sf::Color(0,0,0),sf::Color(255,255,255),sf::Color(255,255,255)),
                         true,sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(127,127,127));
-    this->m_hp_bar = new GUI::Progressbar(new GUI::Point(70,0),sf::Vector2f(130,20),sf::Color(255,255,255),sf::Color(255,0,0),sf::Color(255,0,0));
-    this->m_exp_bar = new GUI::Progressbar(new GUI::Point(70,30),sf::Vector2f(130,20),sf::Color(255,255,255),sf::Color(255,255,0),sf::Color(0,255,0));
+    this->m_hp_bar = new GUI::Progressbar(sf::Vector2f(70,0),sf::Vector2f(130,20),sf::Color(255,255,255),sf::Color(255,0,0),sf::Color(255,0,0));
+    this->m_exp_bar = new GUI::Progressbar(sf::Vector2f(70,30),sf::Vector2f(130,20),sf::Color(255,255,255),sf::Color(255,255,0),sf::Color(0,255,0));
     this->m_exp_bar->setOutlineThickness(-3);
     this->m_exp_bar->setOutlineColor(sf::Color(127,127,127));
 
     this->m_hp_bar->setOutlineThickness(-3);
     this->m_hp_bar->setOutlineColor(sf::Color(127,127,127));
-    this->m_hp_bar->setLabel(new GUI::Label(new GUI::Point(0,0),"20/20",&this->m_font,15,sf::Color(255,255,255),sf::Color(255,255,255),sf::Color(255,255,255)));
-    this->m_exp_bar->setLabel(new GUI::Label(new GUI::Point(0,0),"0/20",&this->m_font,15,sf::Color(255,0,255),sf::Color(255,0,255),sf::Color(255,0,255)));
+    this->m_hp_bar->setLabel(new GUI::Label(sf::Vector2f(0,0),"20/20",&this->m_font,15,sf::Color(255,255,255),sf::Color(255,255,255),sf::Color(255,255,255)));
+    this->m_exp_bar->setLabel(new GUI::Label(sf::Vector2f(0,0),"0/20",&this->m_font,15,sf::Color(255,0,255),sf::Color(255,0,255),sf::Color(255,0,255)));
 
     this->updateHP();
     this->updateEXP();

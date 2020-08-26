@@ -10,7 +10,7 @@ namespace GUI{
     class Droplist : public GUI
     {
         public:
-            Droplist(const Point *start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Droplist(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Droplist();
             void update();
             void render(sf::RenderTarget *target);

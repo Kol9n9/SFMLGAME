@@ -6,7 +6,7 @@ namespace GUI{
     class Label : public GUI
     {
         public:
-            Label(const Point *start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            Label(const sf::Vector2f &start_pos, const sf::String &str, sf::Font *font, unsigned int textSize,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~Label();
             void update();
             void render(sf::RenderTarget *target);

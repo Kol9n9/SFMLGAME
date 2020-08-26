@@ -36,14 +36,14 @@ namespace GUI{
     class GUI
     {
         public:
-            GUI(const Point *start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
+            GUI(const sf::Vector2f &start_pos, const sf::Vector2f &sizes,sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK);
             virtual ~GUI();
             virtual void update() = 0;
             virtual void render(sf::RenderTarget *target) = 0;
             static void updateEvents(sf::RenderWindow *target, sf::Event &events);
 
-            void setStartPoint(const Point &start_point) {start_pos = start_point;}
-            const Point &getStartPoint() const {return start_pos;}
+            void setStartPos(const sf::Vector2f &start_pos) {this->start_pos = start_pos;}
+            const sf::Vector2f &getStartPos() const {return start_pos;}
 
             sf::Vector2f &getSizes() {return this->sizes;}
             void setSizes(const sf::Vector2f &sz) {sizes = sz;}
@@ -91,7 +91,7 @@ namespace GUI{
             void *a_a;
 
             GUI_STATUS status;
-            Point start_pos;
+            sf::Vector2f start_pos;
             sf::Vector2f sizes;
 
             sf::Color color_IDLE;

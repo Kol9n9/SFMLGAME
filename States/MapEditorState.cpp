@@ -14,7 +14,7 @@ void MapEditorState::initView()
 }
 void MapEditorState::initDroplists()
 {
-    this->m_select_level = new GUI::Droplist(new GUI::Point(0,0),sf::Vector2f(100,20),sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(255,255,255));
+    this->m_select_level = new GUI::Droplist(sf::Vector2f(0,0),sf::Vector2f(100,20),sf::Color(255,255,255),sf::Color(127,127,127),sf::Color(255,255,255));
 }
 MapEditorState::MapEditorState(sf::RenderWindow *target, std::vector<State*>*m_states)
     : State(target,m_states)
