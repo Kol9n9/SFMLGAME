@@ -104,6 +104,7 @@ namespace GUI{
     void GUI::startMove()
     {
         if(GUI::isAnyGUIMoving) return;
+        if(this->isMoving) return;
         GUI::isAnyGUIMoving = true;
         this->isMoving = true;
         this->move_offset = sf::Vector2f(this->mousePos.x - this->start_pos.x,this->mousePos.y - this->start_pos.y);

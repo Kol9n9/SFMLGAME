@@ -12,12 +12,13 @@ namespace GUI{
             void update();
             void render(sf::RenderTarget *target);
             bool &isChecked() {return isCheck;}
-            void Moving();
+
             void setPosition(const sf::Vector2f &pos);
             void setSize(const sf::Vector2f &size);
         protected:
 
         private:
+            void Moving();
             int lineWidth;
             sf::RectangleShape line1;
             sf::RectangleShape line2;

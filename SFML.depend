@@ -1899,7 +1899,7 @@
 	"GUI.h"
 	"MainMenuState.h"
 
-1598430926 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.h
+1598515923 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.h
 	<iostream>
 	<string>
 	<vector>
@@ -1930,7 +1930,7 @@
 1598423652 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\label.h
 	"GUI.h"
 
-1598423572 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.h
+1598515028 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.h
 	<Button_interface.h>
 
 1598340848 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\maingamestate.h
@@ -1993,7 +1993,7 @@
 1598423673 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\scrollbar.h
 	<GUI.h>
 
-1598430970 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.cpp
+1598515298 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\gui.cpp
 	"GUI.h"
 
 1598423957 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\label.cpp
@@ -2335,17 +2335,17 @@
 1598340848 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\texttag.cpp
 	"TextTag.h"
 
-1598431436 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\tile.cpp
+1598497505 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\tile.cpp
 	"Tile.h"
 
-1598431678 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\tile.h
+1598497505 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\tile.h
 	"SFML/Graphics.hpp"
 	<iostream>
 
-1598433460 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\maptile.cpp
+1598497504 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\maptile.cpp
 	"MapTile.h"
 
-1598433464 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\maptile.h
+1598497505 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\maptile.h
 	"Tile.h"
 	<vector>
 	<string>
@@ -2353,15 +2353,16 @@
 	<iostream>
 	<map>
 
-1598429843 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.h
+1598517129 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.h
 	<State.h>
 	"../MapTile.h"
 	"Droplist.h"
 	"MouseScrollingArea.h"
 	"Checkbox.h"
+	"SpriteList.h"
 	<map>
 
-1598433395 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.cpp
+1598517144 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.cpp
 	"MapEditorState.h"
 
 1598426756 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\mousescrollingarea.h
@@ -2404,4 +2405,12 @@
 
 1598447804 source:c:\users\79243\desktop\sfmlgame\states\mapeditorstate.cpp
 	"MapEditorState.h"
+
+1598514366 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\spritelist.h
+	<GUI.h>
+	"SFML/Graphics.hpp"
+	"../Tile.h"
+
+1598515220 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\spritelist.cpp
+	"SpriteList.h"
 

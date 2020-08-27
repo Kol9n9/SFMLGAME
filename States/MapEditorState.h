@@ -6,6 +6,7 @@
 #include "Droplist.h"
 #include "MouseScrollingArea.h"
 #include "Checkbox.h"
+#include "SpriteList.h"
 #include <map>
 
 class MapEditorState : public State
@@ -23,29 +24,46 @@ class MapEditorState : public State
         MapTile *m_map_tile;
         sf::View m_view;
         sf::View m_default_view;
-        GUI::Droplist *m_select_level;
+
+        sf::RectangleShape m_settings;
+
+        GUI::Droplist *m_droplist_selectlevel;
+        GUI::Droplist *m_droplist_renderlevel;
         GUI::MouseScrollingArea *m_map_scrolling;
         GUI::Checkbox *m_checkbox_move;
         GUI::Checkbox *m_checkbox_resize;
         GUI::Checkbox *m_checkbox_showed;
+        GUI::SpriteList *m_select_sprite_list;
 
+        GUI::Label *m_label_renderlevel;
+        GUI::Label *m_label_selectlevel;
+
+        sf::Font m_font;
 
         std::map<int,Tile*> m_level_tiles;
         Tile *m_current_tile;
         bool m_created_tile;
         bool m_edit_tile;
 
+        float m_zoom;
+
         void initMapTile();
         void initView();
         void initDroplists();
         void initMouseScrollingAreas();
         void initCheckboxes();
+        void initLists();
+        void initLabels();
 
 
-
-
-
+        void updateGUIElements();
         void updateKeyBoard();
+        void updateCreateTile();
+        void updateEditTile();
+        void updateMapTile();
+        void updateTileMoving();
+
+        void renderGUIElements();
         void endState();
 };
 

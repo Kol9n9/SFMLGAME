@@ -102,6 +102,8 @@
 		<Unit filename="GUI/Scrollbar.cpp" />
 		<Unit filename="GUI/Scrollbar.h" />
 		<Unit filename="GUI/Slider.h" />
+		<Unit filename="GUI/SpriteList.cpp" />
+		<Unit filename="GUI/SpriteList.h" />
 		<Unit filename="GUI/TextInput.cpp" />
 		<Unit filename="GUI/TextInput.h" />
 		<Unit filename="Game.cpp" />
