@@ -54,7 +54,7 @@ MainGameState::MainGameState(sf::RenderWindow *target, std::vector<State*>*m_sta
     this->initPlayerHUD();
 
     this->m_game_map = new MapTile();
-    this->m_game_map->loadLevel();
+    this->m_game_map->loadLevel(1);
 }
 
 MainGameState::~MainGameState()

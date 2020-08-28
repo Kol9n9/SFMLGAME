@@ -25,6 +25,7 @@ namespace GUI{
     }
     void Droplist::update()
     {
+        this->m_ishovered = false;
         this->updateGUIState();
         //this->but->update();
         this->but->updateColor(this->getGUIStatus());
@@ -47,13 +48,22 @@ namespace GUI{
                 break;
             }
         }
+        if(this->list)
+        {
+            this->list->update();
+            if(this->list->getGUIStatus() == GUI_STATUS::HOVER || this->list->getGUIStatus() == GUI_STATUS::CLICKING || this->list->getGUIStatus() == GUI_STATUS::CLICK)
+                this->m_ishovered = true;
+        }
 
         if(this->list && this->isListVisible)
         {
-            this->list->update();
+
             if(!this->list->isSliderSelected() && this->getMouseClickEvent() == MOUSE_CLICK_EVENTS::LEFTCLICK && this->list->getGUIStatus() != GUI_STATUS::HOVER
                && this->list->getGUIStatus() != GUI_STATUS::CLICK && this->list->getGUIStatus() != GUI_STATUS::CLICKING)
-                this->isListVisible = false;
+               {
+                   this->isListVisible = false;
+               }
+
             if(this->list->getIsItemSelected())
             {
                 this->activeItem = this->list->getActiveItem();
@@ -99,6 +109,18 @@ namespace GUI{
         this->but->setPosition(sf::Vector2f(pos.x + this->getSizes().x - this->butWidth, pos.y));
         if(this->list) this->list->setPosition(sf::Vector2f(pos.x,pos.y+this->getSizes().y + this->list->getBoxBorder()));
     }
+    void Droplist::insert(Label* label)
+    {
+        if(!this->list) return;
+        this->list->insert(label);
+    }
+    void Droplist::setActiveItem(const int &index)
+    {
+        if(!this->list) return;
+        this->list->changeItem(index);
+        this->activeItem = this->list->getActiveItem();
+        this->text = this->activeItem.text->getText();
+    }
     void Droplist::Moving()
     {
         this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(GUI::mousePos) - this->getMoveOffset()));
@@ -115,5 +137,16 @@ namespace GUI{
         this->setSize(this->getSizes());
         this->but->setPosition(sf::Vector2f(this->getStartPos().x + this->getSizes().x - this->butWidth, this->getStartPos().y));
         if(this->list) this->list->setPosition(sf::Vector2f(this->getStartPos().x,this->getStartPos().y+this->getSizes().y+this->list->getBoxBorder()));
+    }
+    void Droplist::setButWidth(const float &width)
+    {
+        this->but->setSize(sf::Vector2f(width,this->getSizes().y));
+        this->but->setPosition(sf::Vector2f(this->getStartPos().x + this->getSizes().x - width, this->getStartPos().y));
+        this->butWidth = width;
+    }
+    const bool &Droplist::isItemSelected()
+    {
+        if(!list)return false;
+        return list->getIsItemSelected();
     }
 }

@@ -8,6 +8,7 @@
 #include "Checkbox.h"
 #include "SpriteList.h"
 #include <map>
+#include <typeinfo>
 
 class MapEditorState : public State
 {
@@ -40,10 +41,15 @@ class MapEditorState : public State
 
         sf::Font m_font;
 
+        sf::Vector2f m_mouse_offset;
+
         std::map<int,Tile*> m_level_tiles;
         Tile *m_current_tile;
         bool m_created_tile;
         bool m_edit_tile;
+
+        int m_current_selected_level;
+        int m_current_rendered_level;
 
         float m_zoom;
 
@@ -55,6 +61,7 @@ class MapEditorState : public State
         void initLists();
         void initLabels();
 
+        void loadMapLevel();
 
         void updateGUIElements();
         void updateKeyBoard();
@@ -65,6 +72,11 @@ class MapEditorState : public State
 
         void renderGUIElements();
         void endState();
+
+        void changeSelectedLevel(const int &level);
+        void changeRenderedLevel(const int &level);
+
+
 };
 
 #endif // MAPEDITORSTATE_H

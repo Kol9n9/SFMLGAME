@@ -17,6 +17,7 @@ namespace GUI{
 
     Label::~Label()
     {
+        std::cout << "~Label\n";
         //dtor
     }
     void Label::updateColor()

@@ -30,7 +30,19 @@ Tile *MapTile::addTile(const int &render_level, Tile *tile,const sf::Vector2f &p
     this->m_tile_edit = newTile;
     return this->m_tiles[render_level].back();
 }
-std::map<int, Tile*> MapTile::getLevelTiles(const int &level)
+void MapTile::removeTile(Tile *tile)
+{
+    for(int i(0); i < this->m_tiles.size(); ++i)
+        for(int j(0); j < this->m_tiles[i].size();++j)
+            if(this->m_tiles[i][j] == tile)
+            {
+                delete this->m_tiles[i][j];
+                this->m_tiles[i].erase(this->m_tiles[i].begin() + j);
+                if(this->m_tile_hover) this->m_tile_hover = nullptr;
+                break;
+            }
+}
+std::map<int, Tile*> MapTile::getLevelTiles()
 {
     std::map<int, Tile*> result;
     for(auto it = this->m_level_tile.begin(); it != this->m_level_tile.end(); ++it)
@@ -63,10 +75,20 @@ void MapTile::update(const sf::Vector2f &pos)
         }
     }
 }
-void MapTile::loadLevel()
+void MapTile::loadLevel(const int &lvl)
 {
-    std::ifstream level("config/level1.cfg");
-    std::ifstream tile("config/level1tile.cfg");
+    this->clear();
+    std::string levelfile = "config/level";
+    levelfile += std::to_string(lvl);
+    levelfile += ".cfg";
+
+    std::string tilefile = "config/level";
+    tilefile += std::to_string(lvl);
+    tilefile += "tile.cfg";
+
+
+    std::ifstream level(levelfile);
+    std::ifstream tile(tilefile);
 
     if(!level)
     {
@@ -109,9 +131,12 @@ void MapTile::loadLevel()
     level.close();
     tile.close();
 }
-void MapTile::saveLevel()
+void MapTile::saveLevel(const int &lvl)
 {
-    std::ofstream level("config/level1.cfg");
+    std::string levelfile = "config/level";
+    levelfile += std::to_string(lvl);
+    levelfile += ".cfg";
+    std::ofstream level(levelfile);
     for(auto &vec : this->m_tiles)
     {
         for(auto &tile : vec.second)
@@ -123,4 +148,18 @@ void MapTile::saveLevel()
         }
     }
     level.close();
+}
+void MapTile::clear()
+{
+    this->m_level_tile.clear();
+    for(int i(0); i < this->m_tiles.size(); ++i)
+    {
+        for(int j(0); j < this->m_tiles[i].size(); ++j)
+        {
+            delete this->m_tiles[i][j];
+            this->m_tiles[i][j] = nullptr;
+        }
+        this->m_tiles[i].clear();
+    }
+    this->m_tiles.clear();
 }

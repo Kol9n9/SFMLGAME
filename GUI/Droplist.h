@@ -18,6 +18,13 @@ namespace GUI{
             void Moving();
             void setPosition(const sf::Vector2f &pos);
             void setSize(const sf::Vector2f &size);
+            void setButWidth(const float &width);
+            void insert(Label*);
+            sf::Text &getActiveItemText() {return activeItem.text->getText();}
+            void setActiveItem(const int &index);
+            const bool &isItemSelected();
+            const bool &isHovered() {return m_ishovered;};
+            void setListItems(const int &c){if(!this->list)return; this->list->setItemCount(c);}
         protected:
 
         private:
@@ -25,11 +32,16 @@ namespace GUI{
             Button *but;
             sf::Text text;
             List *list;
+
+            bool m_ishovered;
             float butWidth;
             bool isListVisible;
             void (*callback)(void*);
             List_Item activeItem;
+
+
             void Resizing();
+
 
     };
 }

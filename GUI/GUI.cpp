@@ -27,9 +27,6 @@ namespace GUI{
     }
     void GUI::updateGUIState()
     {
-
-
-
         if(this->isMoving)
         {
             std::cout << "pos x = " << start_pos.x << " y = " << start_pos.y << "\n";
@@ -64,13 +61,13 @@ namespace GUI{
             {
                 this->cb_Click(this,a_a);
             }
+            std::cout << "Clicked\n";
             this->status = GUI_STATUS::CLICK;
             return;
 
         }
 
         this->status = GUI_STATUS::IDLE;
-
         if(this->isContains())
         {
             this->status = GUI_STATUS::HOVER;

@@ -16,14 +16,16 @@ class MapTile
         void update(const sf::Vector2f &mousePos);
         void addTile(const int &render_level, const sf::IntRect &rect,const sf::Vector2f &pos, const int &tile_type);
         Tile *addTile(const int &render_level, Tile *tile, const sf::Vector2f &pos);
+        void removeTile(Tile *tile);
+
 
         Tile *getHoverTile() {return m_tile_hover;}
 
-        std::map<int, Tile*> getLevelTiles(const int &level = 0);
+        std::map<int, Tile*> getLevelTiles();
         void setTileEdit(Tile *tile){m_tile_edit = tile;}
 
-        void loadLevel();
-        void saveLevel();
+        void loadLevel(const int &level);
+        void saveLevel(const int &level);
     protected:
 
     private:
@@ -32,6 +34,8 @@ class MapTile
         Tile *m_tile_hover;
         std::map<int, std::vector<Tile*>>m_tiles;
         std::map<int, sf::IntRect> m_level_tile;
+
+        void clear();
 };
 
 #endif // MAPTILE_H

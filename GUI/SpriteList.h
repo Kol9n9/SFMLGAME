@@ -31,6 +31,7 @@ namespace GUI{
 
             Tile *getHoverTile() {return m_list_item_hover->m_tile;}
             bool const &isHovered() {return m_isHovered;}
+            void clear();
         protected:
 
         private:

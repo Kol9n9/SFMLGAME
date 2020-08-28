@@ -87,4 +87,12 @@ namespace GUI{
     {
         this->setPosition(sf::Vector2f(static_cast<sf::Vector2f>(GUI::mousePos) - this->getMoveOffset()));
     }
+    void SpriteList::clear()
+    {
+        for(auto &tile : this->m_list_items)
+        {
+            if(tile.m_tile) delete tile.m_tile;
+        }
+        this->m_list_items.clear();
+    }
 }
