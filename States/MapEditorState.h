@@ -63,7 +63,7 @@ class MapEditorState : public State
 
         void loadMapLevel();
 
-        void updateGUIElements();
+        void updateGUIElements(const float &dt);
         void updateKeyBoard();
         void updateCreateTile();
         void updateEditTile();

@@ -1977,10 +1977,10 @@
 1598423802 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\checkbox.cpp
 	"Checkbox.h"
 
-1598599830 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.cpp
+1598604757 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.cpp
 	"Droplist.h"
 
-1598600105 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.h
+1598604806 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\droplist.h
 	<GUI.h>
 	"Button.h"
 	"List.h"
@@ -2353,7 +2353,7 @@
 	<iostream>
 	<map>
 
-1598600380 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.h
+1598604628 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.h
 	<State.h>
 	"../MapTile.h"
 	"Droplist.h"
@@ -2363,7 +2363,7 @@
 	<map>
 	<typeinfo>
 
-1598601973 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.cpp
+1598604616 source:c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\states\mapeditorstate.cpp
 	"MapEditorState.h"
 
 1598426756 c:\users\АЛЕКСАНДР\desktop\НИКОЛАЙ\учеба\алгоритмы\sfmlgame\gui\mousescrollingarea.h

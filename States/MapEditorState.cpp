@@ -122,7 +122,7 @@ void MapEditorState::loadMapLevel()
 void MapEditorState::update(const float &dt)
 {
     this->updateKeyBoard();
-    this->updateGUIElements();
+    this->updateGUIElements(dt);
     this->m_select_sprite_list->update();
     this->updateCreateTile();
     this->updateMapTile();
@@ -130,10 +130,10 @@ void MapEditorState::update(const float &dt)
     this->updateTileMoving();
 
 }
-void MapEditorState::updateGUIElements()
+void MapEditorState::updateGUIElements(const float &dt)
 {
-    this->m_droplist_selectlevel->update();
-    this->m_droplist_renderlevel->update();
+    this->m_droplist_selectlevel->update(dt);
+    this->m_droplist_renderlevel->update(dt);
 
     if(this->m_droplist_selectlevel->isItemSelected())
     {

@@ -1,5 +1,6 @@
 #include "Droplist.h"
 namespace GUI{
+    bool Droplist::isAvailable = true;
     Droplist::Droplist(const sf::Vector2f &start_pos, const sf::Vector2f &sizes, sf::Color c_IDLE, sf::Color c_HOVER, sf::Color c_CLICK)
         : GUI(start_pos,sizes,c_IDLE,c_HOVER,c_CLICK)
     {
@@ -23,6 +24,21 @@ namespace GUI{
         delete this->list;
         //dtor
     }
+    void Droplist::update(const float &dt)
+    {
+        if(this->m_isRunning)
+        {
+            this->m_keyTime += dt;
+            if(this->m_keyTime >= this->m_keyMaxTime)
+            {
+                this->m_keyTime = 0;
+                Droplist::isAvailable = true;
+                this->m_isRunning = false;
+            }
+        }
+        this->update();
+
+    }
     void Droplist::update()
     {
         this->m_ishovered = false;
@@ -44,7 +60,13 @@ namespace GUI{
             }
             case GUI_STATUS::CLICK:
             {
-                this->isListVisible = true;
+                if(Droplist::isAvailable)
+                {
+                    this->isListVisible = true;
+                    this->m_isRunning = true;
+                    Droplist::isAvailable = false;
+                }
+
                 break;
             }
         }
@@ -60,15 +82,19 @@ namespace GUI{
 
             if(!this->list->isSliderSelected() && this->getMouseClickEvent() == MOUSE_CLICK_EVENTS::LEFTCLICK && this->list->getGUIStatus() != GUI_STATUS::HOVER
                && this->list->getGUIStatus() != GUI_STATUS::CLICK && this->list->getGUIStatus() != GUI_STATUS::CLICKING)
-               {
-                   this->isListVisible = false;
-               }
+            {
+                this->isListVisible = false;
+                this->m_isRunning = true;
+                Droplist::isAvailable = false;
+            }
 
             if(this->list->getIsItemSelected())
             {
                 this->activeItem = this->list->getActiveItem();
                 this->text = this->activeItem.text->getText();
                 this->isListVisible = false;
+                this->m_isRunning = true;
+                Droplist::isAvailable = false;
             }
         }
         if(this->list)
