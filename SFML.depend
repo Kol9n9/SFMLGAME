@@ -2148,7 +2148,7 @@
 1598438962 c:\users\79243\desktop\sfmlgame\gui\label.h
 	"GUI.h"
 
-1598438962 c:\users\79243\desktop\sfmlgame\gui\checkbox.h
+1598686056 c:\users\79243\desktop\sfmlgame\gui\checkbox.h
 	<Button_interface.h>
 
 1598438962 c:\users\79243\desktop\sfmlgame\states\maingamestate.h
@@ -2242,10 +2242,10 @@
 1598438962 source:c:\users\79243\desktop\sfmlgame\gui\checkbox.cpp
 	"Checkbox.h"
 
-1598438962 source:c:\users\79243\desktop\sfmlgame\gui\droplist.cpp
+1598686056 source:c:\users\79243\desktop\sfmlgame\gui\droplist.cpp
 	"Droplist.h"
 
-1598438962 c:\users\79243\desktop\sfmlgame\gui\droplist.h
+1598686056 c:\users\79243\desktop\sfmlgame\gui\droplist.h
 	<GUI.h>
 	"Button.h"
 	"List.h"
@@ -2258,10 +2258,10 @@
 1598438962 c:\users\79243\desktop\sfmlgame\gui\scrollbar.h
 	<GUI.h>
 
-1598438962 source:c:\users\79243\desktop\sfmlgame\gui\gui.cpp
+1598686056 source:c:\users\79243\desktop\sfmlgame\gui\gui.cpp
 	"GUI.h"
 
-1598438962 source:c:\users\79243\desktop\sfmlgame\gui\label.cpp
+1598686056 source:c:\users\79243\desktop\sfmlgame\gui\label.cpp
 	"Label.h"
 
 1598438962 source:c:\users\79243\desktop\sfmlgame\gui\list.cpp
@@ -2302,7 +2302,7 @@
 1597987063 source:c:\users\79243\desktop\sfmlgame\texttag.cpp
 	"TextTag.h"
 
-1598438962 source:c:\users\79243\desktop\sfmlgame\states\maingamestate.cpp
+1598686056 source:c:\users\79243\desktop\sfmlgame\states\maingamestate.cpp
 	"MainGameState.h"
 
 1598438962 c:\users\79243\desktop\sfmlgame\playerhud.h
@@ -2372,7 +2372,7 @@
 1598425877 source:c:\users\ÀËÅÊÑÀÍÄĞ\desktop\ÍÈÊÎËÀÉ\ó÷åáà\àëãîğèòìû\sfmlgame\gui\mousescrollingarea.cpp
 	"MouseScrollingArea.h"
 
-1598447006 c:\users\79243\desktop\sfmlgame\maptile.h
+1598686056 c:\users\79243\desktop\sfmlgame\maptile.h
 	"Tile.h"
 	<vector>
 	<string>
@@ -2380,17 +2380,19 @@
 	<iostream>
 	<map>
 
-1598447509 c:\users\79243\desktop\sfmlgame\tile.h
+1598689137 c:\users\79243\desktop\sfmlgame\tile.h
 	"SFML/Graphics.hpp"
 	<iostream>
 
-1598444583 c:\users\79243\desktop\sfmlgame\states\mapeditorstate.h
+1598686056 c:\users\79243\desktop\sfmlgame\states\mapeditorstate.h
 	<State.h>
 	"../MapTile.h"
 	"Droplist.h"
 	"MouseScrollingArea.h"
 	"Checkbox.h"
+	"SpriteList.h"
 	<map>
+	<typeinfo>
 
 1598438962 c:\users\79243\desktop\sfmlgame\gui\mousescrollingarea.h
 	<GUI.h>
@@ -2398,13 +2400,13 @@
 1598438962 source:c:\users\79243\desktop\sfmlgame\gui\mousescrollingarea.cpp
 	"MouseScrollingArea.h"
 
-1598447741 source:c:\users\79243\desktop\sfmlgame\maptile.cpp
+1598686056 source:c:\users\79243\desktop\sfmlgame\maptile.cpp
 	"MapTile.h"
 
-1598447452 source:c:\users\79243\desktop\sfmlgame\tile.cpp
+1598688653 source:c:\users\79243\desktop\sfmlgame\tile.cpp
 	"Tile.h"
 
-1598447804 source:c:\users\79243\desktop\sfmlgame\states\mapeditorstate.cpp
+1598688784 source:c:\users\79243\desktop\sfmlgame\states\mapeditorstate.cpp
 	"MapEditorState.h"
 
 1598588251 c:\users\ÀËÅÊÑÀÍÄĞ\desktop\ÍÈÊÎËÀÉ\ó÷åáà\àëãîğèòìû\sfmlgame\gui\spritelist.h
@@ -2413,5 +2415,13 @@
 	"../Tile.h"
 
 1598588332 source:c:\users\ÀËÅÊÑÀÍÄĞ\desktop\ÍÈÊÎËÀÉ\ó÷åáà\àëãîğèòìû\sfmlgame\gui\spritelist.cpp
+	"SpriteList.h"
+
+1598686056 c:\users\79243\desktop\sfmlgame\gui\spritelist.h
+	<GUI.h>
+	"SFML/Graphics.hpp"
+	"../Tile.h"
+
+1598686056 source:c:\users\79243\desktop\sfmlgame\gui\spritelist.cpp
 	"SpriteList.h"
 

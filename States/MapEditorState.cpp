@@ -231,7 +231,15 @@ void MapEditorState::updateMapTile()
     sf::Vector2i mousePos  = sf::Mouse::getPosition(*this->target);
     sf::Vector2f wordPos = this->target->mapPixelToCoords(mousePos);
     this->target->setView(this->m_default_view);
+    if(this->m_map_tile->getHoverTile())
+    {
+        this->m_map_tile->getHoverTile()->setBorderShow(false);
+    }
     this->m_map_tile->update(wordPos);
+    if(this->m_map_tile->getHoverTile())
+    {
+        this->m_map_tile->getHoverTile()->setBorderShow(true);
+    }
 }
 void MapEditorState::updateTileMoving()
 {

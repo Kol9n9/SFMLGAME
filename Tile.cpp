@@ -25,10 +25,21 @@ Tile::~Tile()
 void Tile::render(sf::RenderTarget *target)
 {
     target->draw(this->m_sprite);
+    if(this->m_isBorderShow)
+    {
+        sf::RectangleShape shape;
+        shape.setPosition(this->m_pos);
+        shape.setSize(sf::Vector2f(this->m_sprite.getGlobalBounds().width,this->m_sprite.getGlobalBounds().height));
+        shape.setFillColor(sf::Color::Transparent);
+        shape.setOutlineColor(sf::Color(7,150,3));
+        shape.setOutlineThickness(-2);
+        target->draw(shape);
+    }
 }
 void Tile::update(const sf::Vector2i &mousePos)
 {
     this->m_isHover = false;
+    this->m_isBorderShow = false;
     this->isContain(mousePos);
 }
 void Tile::isContain(const sf::Vector2i &mousePos)

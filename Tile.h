@@ -20,6 +20,7 @@ class Tile
         bool &isHover() { return m_isHover;}
         void Moving(const sf::Vector2f &pos);
         sf::Vector2f getTileCenter() {return sf::Vector2f(this->m_sprite.getGlobalBounds().width/2,this->m_sprite.getGlobalBounds().height/2);}
+        void setBorderShow(const bool &st) {m_isBorderShow = st;}
     protected:
 
     private:
@@ -27,6 +28,7 @@ class Tile
         sf::Vector2f m_pos;
         int m_tile_type;
         bool m_isHover;
+        bool m_isBorderShow = false;
 
         void isContain(const sf::Vector2i &mousePos);
 
